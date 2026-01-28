@@ -1,0 +1,12 @@
+[project]
+name = "tfg-server"
+version = "0.1.0"
+description = "Program to be executed on the server side of the TFG project."
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "geopy>=2.4.1",
+    "mariadb>=1.1.14",
+    "paho-mqtt>=2.1.0",
+    "python-dotenv>=1.2.1",
+]

@@ -3,7 +3,8 @@ import mariadb
 import sys
 from dotenv import load_dotenv
 from typing import List, Tuple
-from src.utils.logger import setup_logger # Import your new logger
+
+from src.Utils.logger import setup_logger
 
 load_dotenv()
 

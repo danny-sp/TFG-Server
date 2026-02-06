@@ -1,5 +1,7 @@
 from datetime import time
 
+from src.Domain.charging_stationDAO import ChargingStationDAO
+
 from src.Domain.service import Service
 from src.Domain.charger import Charger
 
@@ -14,6 +16,20 @@ class ChargingStation:
         self._services = services
         self._chargers = chargers
 
+        self._chargingStationDAO = ChargingStationDAO()
+
+    def insert(self):
+        self._chargingStationDAO.insert(self)
+
+    def update(self):
+        self._chargingStationDAO.update(self)
+
+    def delete(self):
+        self._chargingStationDAO.delete(self)
+
+    ##############
+    # PROPERTIES #
+    ##############
     @property
     def id(self) -> int:
         return self._id
@@ -21,6 +37,14 @@ class ChargingStation:
     @property
     def name(self) -> str:
         return self._name
+
+    @property
+    def latitude(self) -> float:
+        return self._latitude
+
+    @property
+    def longitude(self) -> float:
+        return self._longitude
 
     @property
     def location(self) -> tuple[float, float]:

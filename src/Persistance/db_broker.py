@@ -77,7 +77,7 @@ class DBBroker:
                 connection.close()
                 self._logger.debug("Connection returned to pool.")
 
-    def execute_write_query(self, query: str, params: Tuple = ()) -> int:
+    def execute_write_query(self, query: str, params: Tuple = ()) -> Tuple[int, int]:
         connection = None
         cursor = None
         try:
@@ -90,9 +90,10 @@ class DBBroker:
             connection.commit()
 
             affected_rows = cursor.rowcount
+            last_insert_id = cursor.lastrowid
             self._logger.debug(f"Write operation successful. Rows affected: {affected_rows}")
 
-            return affected_rows
+            return affected_rows, last_insert_id
 
         except mariadb.Error as e:
             if connection:

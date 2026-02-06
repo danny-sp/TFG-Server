@@ -1,21 +1,37 @@
 from datetime import datetime
 
+from src.Domain.charging_sessionDAO import ChargingSessionDAO
+
 from src.Domain.charger import Charger
 from src.Domain.booking import Booking
 
 class ChargingSession:
-    def __init__(self, session_id: int, booking: Booking, charger: Charger, start_time: datetime, end_time: datetime = None, energy_delivered_kwh: float = 0.0, total_cost: float = 0.0):
-        self._session_id = session_id
+    def __init__(self, id: int, booking: Booking, charger: Charger, start_date: datetime, end_date: datetime = None, energy_delivered_kwh: float = 0.0, total_cost: float = 0.0):
+        self._id = id
         self._booking = booking
         self._charger = charger
-        self._start_time = start_time
-        self._end_time = end_time
+        self._start_date = start_date
+        self._end_date = end_date
         self._energy_delivered_kwh = energy_delivered_kwh
         self._total_cost = total_cost
 
+        self._charging_sessionDAO = ChargingSessionDAO()
+
+    def insert(self):
+        self._charging_sessionDAO.insert(self)
+
+    def update(self):
+        self._charging_sessionDAO.update(self)
+
+    def delete(self):
+        self._charging_sessionDAO.delete(self)
+
+    ##############
+    # PROPERTIES #
+    ##############
     @property
     def id(self) -> int:
-        return self._session_id
+        return self._id
 
     @property
     def booking(self) -> Booking:
@@ -26,16 +42,16 @@ class ChargingSession:
         return self._charger
 
     @property
-    def start_time(self) -> datetime:
-        return self._start_time
+    def start_date(self) -> datetime:
+        return self._start_date
 
     @property
-    def end_time(self) -> datetime:
-        return self._end_time
+    def end_date(self) -> datetime:
+        return self._end_date
 
-    @end_time.setter
-    def end_time(self, end_time: datetime):
-        self._end_time = end_time
+    @end_date.setter
+    def end_date(self, end_date: datetime):
+        self._end_date = end_date
 
     @property
     def energy_delivered_kwh(self) -> float:

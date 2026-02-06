@@ -1,5 +1,7 @@
 from datetime import datetime
 
+from src.Domain.bookingDAO import BookingDAO
+
 from src.Domain.charging_station import ChargingStation
 from src.Domain.price_rate import PriceRate
 from src.Domain.vehicle import Vehicle
@@ -7,19 +9,36 @@ from src.Domain.vehicle import Vehicle
 from src.Utils.constants import BookingStatus
 
 class Booking:
-    def __init__(self, booking_id: int, vehicle: Vehicle, booking_date: datetime, start_time: datetime, end_time: datetime, price_rate: PriceRate, booking_status: BookingStatus, price: float = 0.0):
-        self._booking_id = booking_id
+    def __init__(self, id: int, vehicle: Vehicle, booking_date: datetime, start_date: datetime, end_date: datetime, price_rate: PriceRate, status: BookingStatus, price: float = 0.0):
+        self._id = id
         self._vehicle = vehicle
         self._booking_date = booking_date
-        self._start_time = start_time
-        self._end_time = end_time
+        self._start_date = start_date
+        self._end_date = end_date
         self._price = price
         self._price_rate = price_rate
-        self._booking_status = booking_status
+        self._status = status
+
+        self._bookingDAO = BookingDAO()
+
+    def insert(self):
+        self._bookingDAO.insert(self)
+
+    def update(self):
+        self._bookingDAO.update(self)
+
+    def delete(self):
+        self._bookingDAO.delete(self)
+
+    ##############
+    # PROPERTIES #
+    ##############
+    # Error Code: 1005. Can't create table `ev_charging_system`.`charging_sessions` 
+    # (errno: 150 "Foreign key constraint is incorrectly formed")
 
     @property
     def id(self) -> int:
-        return self._booking_id
+        return self._id
 
     @property
     def vehicle(self) -> Vehicle:
@@ -30,12 +49,12 @@ class Booking:
         return self._booking_date
 
     @property
-    def start_time(self) -> datetime:
-        return self._start_time
+    def start_date(self) -> datetime:
+        return self._start_date
 
     @property
-    def end_time(self) -> datetime:
-        return self._end_time
+    def end_date(self) -> datetime:
+        return self._end_date
 
     @property
     def price_rate(self) -> PriceRate:
@@ -50,5 +69,5 @@ class Booking:
         return self._price
 
     @property
-    def booking_status(self) -> BookingStatus:
-        return self._booking_status
+    def status(self) -> BookingStatus:
+        return self._status

@@ -25,15 +25,13 @@ CREATE TABLE vehicles (
 CREATE TABLE charging_stations (
   id INT AUTO_INCREMENT PRIMARY KEY,
   station_name VARCHAR(100),
-  latitude DECIMAL(9,6) NOT NULL,
-  longitude DECIMAL(9,6) NOT NULL,
-  open_time TIME,
-  close_time TIME
+  operator VARCHAR(100),
+  location POINT NOT NULL,
+  SPATIAL INDEX(location)
 );
 
 CREATE TABLE services (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  charging_station_id INT NOT NULL,
   service_name VARCHAR(150) NOT NULL,
   service_type ENUM(
     'cafe',
@@ -44,10 +42,8 @@ CREATE TABLE services (
     'atm',
     'pharmacy'
   ) NOT NULL,
-  open_time TIME,
-  close_time TIME,
-  FOREIGN KEY (charging_station_id) REFERENCES charging_stations(id)
-    ON DELETE CASCADE ON UPDATE CASCADE
+  location POINT NOT NULL,
+  SPATIAL INDEX(location)
 );
 
 CREATE TABLE charger_types (
@@ -119,31 +115,5 @@ INSERT INTO ev_users (username, email, phone) VALUES
 INSERT INTO vehicles (plate, capacity_kwh, max_kw_speed, user_id) VALUES
 ('ABC123', 75.00, 150.00, 1),
 ('XYZ789', 60.00, 120.00, 2);
-
-INSERT INTO charging_stations (station_name, latitude, longitude, open_time, close_time) VALUES
-('Luz del tajo toledo', 39.857591, -4.020744, '06:00:00', '22:00:00'),
-('Islazul Madrid', 40.364541, -3.736241, '00:00:00', '23:59:59');
-
-INSERT INTO charger_types (charger_name, max_kw_speed, description) VALUES
-('Level 2 Charger', 7.2, 'Standard Level 2 AC charger'),
-('DC Fast Charger', 50.0, 'High-speed DC fast charger');
-
-INSERT INTO chargers (charging_station_id, charger_type_id, charger_busy, charger_active) VALUES
-(1, 1, FALSE, TRUE),
-(1, 2, FALSE, TRUE),
-(2, 1, FALSE, TRUE);
-
-INSERT INTO price_rates (charging_station_id, charger_type_id, price_per_kwh, begin_date, end_date) VALUES
-(1, 1, 0.20, '2024-01-01 00:00:00', '2024-12-31 23:59:59'),
-(1, 2, 0.30, '2024-01-01 00:00:00', '2024-12-31 23:59:59'),
-(2, 1, 0.25, '2024-01-01 00:00:00', '2024-12-31 23:59:59');
-
-INSERT INTO bookings (vehicle_plate, start_date, end_date, price_rate_id, price, status) VALUES
-('ABC123', '2024-07-01 10:00:00', '2024-07-01 12:00:00', 1, 14.40, 'scheduled'),
-('XYZ789', '2024-07-02 14:00:00', '2024-07-02 16:00:00', 2, 18.00, 'scheduled');
-
-INSERT INTO charging_sessions (booking_id, charger_id, start_date, end_date, energy_delivered_kwh, total_cost) VALUES
-(1, 1, '2024-07-01 10:00:00', '2024-07-01 12:00:00', 72.00, 14.40),
-(2, 2, '2024-07-02 14:00:00', '2024-07-02 16:00:00', 60.00, 18.00);
 
 -- End of SQL Script for EV Charging System Database Creation

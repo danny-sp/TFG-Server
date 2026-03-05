@@ -1,3 +1,7 @@
+# data
+*.osm.pbf
+stations_data.json
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]

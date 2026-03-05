@@ -109,3 +109,35 @@ class DBBroker:
             if connection:
                 connection.close()
                 self._logger.debug("Connection returned to pool.")
+
+    def execute_many(self, query: str, params_list: List[Tuple]) -> List[int]:
+        connection = None
+        cursor = None
+        try:
+            connection = self._get_connection()
+            cursor = connection.cursor()
+
+            self._logger.debug(f"Executing batch WRITE query: {query} | Batch size: {len(params_list)}")
+
+            cursor.executemany(query, params_list)
+            connection.commit()
+
+            affected_rows = cursor.rowcount
+            self._logger.debug(f"Batch write operation successful. Total rows affected: {affected_rows}")
+
+            return affected_rows
+
+        except mariadb.Error as e:
+            if connection:
+                connection.rollback()
+                self._logger.warning("Batch transaction rolled back due to error.")
+
+            self._logger.exception(f"Database Batch Write Error executing query: {query}")
+            raise
+
+        finally:
+            if cursor:
+                cursor.close()
+            if connection:
+                connection.close()
+                self._logger.debug("Connection returned to pool.")

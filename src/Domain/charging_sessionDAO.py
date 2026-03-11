@@ -1,6 +1,6 @@
 
-from src.Domain.bookingDAO import BookingDAO
-from src.Domain.chargerDAO import ChargerDAO
+# from src.Domain.bookingDAO import BookingDAO
+# from src.Domain.chargerDAO import ChargerDAO
 
 from src.Domain.charging_session import ChargingSession
 
@@ -53,11 +53,11 @@ class ChargingSessionDAO:
         return self._row_to_charging_session(rows[0]) if rows else None
 
     def _row_to_charging_session(self, row: dict) -> ChargingSession:
-        bookingDAO = BookingDAO()
-        booking = bookingDAO.read_by_id(row['booking_id'])
+        # bookingDAO = BookingDAO()
+        # booking = bookingDAO.read_by_id(row['booking_id'])
 
-        chargerDAO = ChargerDAO()
-        charger = chargerDAO.read_by_id(row['charger_id'])
+        # chargerDAO = ChargerDAO()
+        # charger = chargerDAO.read_by_id(row['charger_id'])
 
         return ChargingSession(
             session_id=row['id'],

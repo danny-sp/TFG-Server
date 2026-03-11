@@ -4,32 +4,34 @@ import os
 import paho.mqtt.client as mqtt
 from concurrent.futures import ThreadPoolExecutor
 from typing import Dict, Any, Callable
-from dotenv import load_dotenv
-from src.utils.logger import setup_logger
 
-load_dotenv()
+from src.Domain.request import Request
+
+from src.Domain.control_requests import ControlRequests
+
+from src.Utils.logger import setup_logger
 
 class MqttListener:
     def __init__(self):
         self._logger = setup_logger("MqttListener")
 
         self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=os.getenv("MQTT_CLIENT_ID", "serv_mqtt"))
-        self.client.username_pw_set(os.getenv("MQTT_USER"), os.getenv("MQTT_PASSWORD"))
+        # self.client.username_pw_set(os.getenv("MQTT_USER"), os.getenv("MQTT_PASSWORD"))
 
         self.executor = ThreadPoolExecutor(max_workers=int(os.getenv("MQTT_MAX_WORKERS", 5)))
+
+        self.broker_host = os.getenv("MQTT_BROKER_HOST", "localhost")
+        self.broker_port = int(os.getenv("MQTT_BROKER_PORT", 1883))
 
         self.client.on_connect = self._on_connect
         self.client.on_message = self._on_message
         self.client.on_disconnect = self._on_disconnect
 
         self.topics: Dict[str, Callable[[dict], None]] = {
-            "cars/init": self._handle_cars_init,
+            "vehicles/requests": self._handle_request,
             "cars/new": self._handle_cars_new,
             "cars/delete": self._handle_cars_delete,
         }
-
-        self.broker_host = os.getenv("MQTT_BROKER_HOST", "localhost")
-        self.broker_port = int(os.getenv("MQTT_BROKER_PORT", 1883))
 
     def start(self):
         """Starts the MQTT loop in a background thread."""
@@ -106,10 +108,13 @@ class MqttListener:
 
 
     # --- HANDLERS (Integration Points with Domain Layer) ---
+    def _handle_request(self, data: dict):
+        self._logger.info(f"Processing 'vehicles/requests' request.")
+        self._logger.debug(f"Request data: {data}")
 
-    def _handle_cars_init(self, data: dict):
-        self._logger.info(f"Processing 'cars/init' request.")
-        # TODO: Call Domain Service here (e.g., self.car_service.initialize_cars(data))
+        options = ControlRequests.process_request(data)
+
+        self.client.publish(f"response/{data['plate']}", options, qos=1)
 
     def _handle_cars_new(self, data: dict):
         self._logger.info(f"Processing 'cars/new' request for: {data.get('car_id', 'unknown')}")

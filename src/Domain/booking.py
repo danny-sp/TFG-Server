@@ -1,7 +1,5 @@
 from datetime import datetime
 
-from src.Domain.bookingDAO import BookingDAO
-
 from src.Domain.charging_station import ChargingStation
 from src.Domain.price_rate import PriceRate
 from src.Domain.vehicle import Vehicle
@@ -19,23 +17,9 @@ class Booking:
         self._price_rate = price_rate
         self._status = status
 
-        self._bookingDAO = BookingDAO()
-
-    def insert(self):
-        self._bookingDAO.insert(self)
-
-    def update(self):
-        self._bookingDAO.update(self)
-
-    def delete(self):
-        self._bookingDAO.delete(self)
-
     ##############
     # PROPERTIES #
     ##############
-    # Error Code: 1005. Can't create table `ev_charging_system`.`charging_sessions` 
-    # (errno: 150 "Foreign key constraint is incorrectly formed")
-
     @property
     def id(self) -> int:
         return self._id

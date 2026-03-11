@@ -1,7 +1,5 @@
 from datetime import datetime
 
-from src.Domain.price_rateDAO import PriceRateDAO
-
 from src.Domain.charger_type import ChargerType
 from src.Domain.charging_station import ChargingStation
 
@@ -13,17 +11,6 @@ class PriceRate:
         self._start_date = start_date
         self._end_date = end_date
         self._price_per_kwh = price_per_kwh
-
-        self._price_rateDAO = PriceRateDAO()
-
-    def insert(self):
-        self._price_rateDAO.insert(self)
-
-    def update(self):
-        self._price_rateDAO.update(self)
-
-    def delete(self):
-        self._price_rateDAO.delete(self)
 
     ##############
     # PROPERTIES #

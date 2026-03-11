@@ -1,4 +1,4 @@
-from src.Domain.charging_stationDAO import ChargingStationDAO
+# from src.Domain.charging_stationDAO import ChargingStationDAO
 
 from src.Domain.charging_station import ChargingStation
 from src.Domain.service import Service
@@ -52,9 +52,9 @@ class ServiceDAO:
         return self._row_to_service(rows[0]) if rows else None
 
     def _row_to_service(self, row: dict, charging_station: ChargingStation = None) -> Service:
-        if charging_station is None:
-            charging_stationDAO = ChargingStationDAO()
-            charging_station = charging_stationDAO.read_by_id(row['charging_station_id'])
+        # if charging_station is None:
+        #     charging_stationDAO = ChargingStationDAO()
+        #     charging_station = charging_stationDAO.read_by_id(row['charging_station_id'])
 
         return Service(
             id=row['id'],

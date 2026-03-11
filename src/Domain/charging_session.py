@@ -15,17 +15,6 @@ class ChargingSession:
         self._energy_delivered_kwh = energy_delivered_kwh
         self._total_cost = total_cost
 
-        self._charging_sessionDAO = ChargingSessionDAO()
-
-    def insert(self):
-        self._charging_sessionDAO.insert(self)
-
-    def update(self):
-        self._charging_sessionDAO.update(self)
-
-    def delete(self):
-        self._charging_sessionDAO.delete(self)
-
     ##############
     # PROPERTIES #
     ##############

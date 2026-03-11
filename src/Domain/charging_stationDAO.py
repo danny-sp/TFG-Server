@@ -9,15 +9,13 @@ class ChargingStationDAO:
 
     def insert(self, charging_station: ChargingStation) -> int:
         query = """
-        INSERT INTO charging_stations (station_name, latitude, longitude, open_time, close_time)
-        VALUES (?, ?, ?, ?, ?)
+        INSERT INTO charging_stations (station_name, operator, location)
+        VALUES (?, ?, ST_GeomFromText(?))
         """
         params = (
             charging_station.name,
-            charging_station.latitude,
-            charging_station.longitude,
-            charging_station.open_time,
-            charging_station.close_time
+            charging_station.operator,
+            f"POINT({charging_station.longitude} {charging_station.latitude})"
         )
         _, inserted_id = self._db.execute_write_query(query, params)
         return inserted_id
@@ -25,15 +23,13 @@ class ChargingStationDAO:
     def update(self, charging_station: ChargingStation) -> None:
         query = """
         UPDATE charging_stations
-        SET station_name = ?, latitude = ?, longitude = ?, open_time = ?, close_time = ?
+        SET station_name = ?, operator = ?, location = ST_GeomFromText(?)
         WHERE id = ?
         """
         params = (
             charging_station.name,
-            charging_station.latitude,
-            charging_station.longitude,
-            charging_station.open_time,
-            charging_station.close_time,
+            charging_station.operator,
+            f"POINT({charging_station.longitude} {charging_station.latitude})",
             charging_station.id
         )
         return self._db.execute_write_query(query, params)
@@ -43,16 +39,40 @@ class ChargingStationDAO:
         params = (charging_station.id,)
         return self._db.execute_write_query(query, params)
 
+    def read_stations_in_area(self, min_lat: float, max_lat: float, min_lon: float, max_lon: float) -> list[ChargingStation]:
+        polygon_wkt = f"POLYGON(({min_lon} {min_lat}, {max_lon} {min_lat}, {max_lon} {max_lat}, {min_lon} {max_lat}, {min_lon} {min_lat}))"
+
+        query = """
+        SELECT id, station_name, operator, 
+               ST_Y(location) as latitude, 
+               ST_X(location) as longitude
+        FROM charging_stations
+        WHERE MBRContains(
+            ST_GeomFromText(?),
+            location
+        )
+        """
+
+        params = (polygon_wkt,)
+
+        rows = self._db.execute_read_query(query, params)
+        return [self._row_to_charging_station(row) for row in rows]
+
     def read_by_id(self, station_id: int) -> ChargingStation:
-        rows = self._db.execute_read_query("SELECT * FROM charging_stations WHERE id = ?", (station_id,))
+        query = """
+        SELECT id, station_name, operator, 
+               ST_Y(location) as latitude, 
+               ST_X(location) as longitude
+        FROM charging_stations 
+        WHERE id = ?
+        """
+        rows = self._db.execute_read_query(query, (station_id,))
         return self._row_to_charging_station(rows[0]) if rows else None
 
     def _row_to_charging_station(self, row) -> ChargingStation:
         return ChargingStation(
             id=row["id"],
             name=row["station_name"],
-            latitude=row["latitude"],
-            longitude=row["longitude"],
-            open_time=row["open_time"],
-            close_time=row["close_time"]
+            operator=row["operator"],
+            location=(row["latitude"], row["longitude"]),
         )

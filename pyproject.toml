@@ -11,6 +11,7 @@ dependencies = [
     "osmium>=4.3.0",
     "paho-mqtt>=2.1.0",
     "pandas>=3.0.1",
+    "polyline>=2.0.4",
     "python-dotenv>=1.2.1",
     "requests>=2.32.5",
 ]

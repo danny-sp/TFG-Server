@@ -1,4 +1,4 @@
-from src.Domain.ev_userDAO import EVUserDAO
+# from src.Domain.ev_userDAO import EVUserDAO
 
 from src.Domain.ev_user import EVUser
 from src.Domain.vehicle import Vehicle
@@ -53,9 +53,9 @@ class VehicleDAO:
         return [self._row_to_vehicle(row, user) for row in rows] if rows else []
 
     def _row_to_vehicle(self, row: dict, user: EVUser = None) -> Vehicle:
-        if user is None:
-            userDAO = EVUserDAO()
-            user = userDAO.read_by_id(row['user_id'])
+        # if user is None:
+        #     userDAO = EVUserDAO()
+        #     user = userDAO.read_by_id(row['user_id'])
 
         return Vehicle(
             plate=row['plate'],

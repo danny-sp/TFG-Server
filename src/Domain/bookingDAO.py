@@ -1,7 +1,7 @@
 from typing import Optional
 
-from src.Domain.vehicleDAO import VehicleDAO
-from src.Domain.price_rateDAO import PriceRateDAO
+# from src.Domain.vehicleDAO import VehicleDAO
+# from src.Domain.price_rateDAO import PriceRateDAO
 
 from src.Domain.booking import Booking
 
@@ -57,12 +57,23 @@ class BookingDAO:
         rows = self._db.execute_read_query("SELECT * FROM bookings WHERE id = ?", (booking_id,))
         return self._row_to_booking(rows[0]) if rows else None
 
-    def _row_to_booking(self, row: dict) -> Booking:
-        price_rateDAO = PriceRateDAO()
-        price_rate = price_rateDAO.read_by_id(row['price_rate_id'])
+    def read_active_by_vehicle_plate(self, plate: str) -> Optional[Booking]:
+        query = """
+        SELECT * FROM bookings 
+        WHERE vehicle_plate = ? AND status = ?
+        ORDER BY booking_date DESC
+        LIMIT 1
+        """
+        params = (plate, BookingStatus.SCHEDULED.value)
+        rows = self._db.execute_read_query(query, params)
+        return self._row_to_booking(rows[0]) if rows else None
 
-        vehicleDAO = VehicleDAO()
-        vehicle = vehicleDAO.read_by_plate(row['vehicle_plate'])
+    def _row_to_booking(self, row: dict) -> Booking:
+        # price_rateDAO = PriceRateDAO()
+        # price_rate = price_rateDAO.read_by_id(row['price_rate_id'])
+
+        # vehicleDAO = VehicleDAO()
+        # vehicle = vehicleDAO.read_by_plate(row['vehicle_plate'])
 
         return Booking(
             id=row['id'],

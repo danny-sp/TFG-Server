@@ -57,6 +57,7 @@ CREATE TABLE chargers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   charging_station_id INT NOT NULL,
   charger_type_id INT NOT NULL,
+  power_kw DECIMAL(5,2) NOT NULL,
   charger_busy BOOLEAN DEFAULT FALSE,
   charger_active BOOLEAN DEFAULT TRUE,
   FOREIGN KEY (charging_station_id) REFERENCES charging_stations(id)

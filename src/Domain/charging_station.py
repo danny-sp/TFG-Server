@@ -1,31 +1,13 @@
-from datetime import time
-
-from src.Domain.charging_stationDAO import ChargingStationDAO
-
 from src.Domain.service import Service
 from src.Domain.charger import Charger
 
 class ChargingStation:
-    def __init__(self, id: int, name: str, latitude: float, longitude: float, open_time: time, close_time: time, services: list[Service], chargers: list[Charger]):
+    def __init__(self, id: int, name: str, location: tuple[float, float], operator: str, chargers: list[Charger]=[]):
         self._id = id
         self._name = name
-        self._latitude = latitude
-        self._longitude = longitude
-        self._open_time = open_time
-        self._close_time = close_time
-        self._services = services
+        self._location = location
+        self._operator = operator
         self._chargers = chargers
-
-        self._chargingStationDAO = ChargingStationDAO()
-
-    def insert(self):
-        self._chargingStationDAO.insert(self)
-
-    def update(self):
-        self._chargingStationDAO.update(self)
-
-    def delete(self):
-        self._chargingStationDAO.delete(self)
 
     ##############
     # PROPERTIES #
@@ -39,24 +21,12 @@ class ChargingStation:
         return self._name
 
     @property
-    def latitude(self) -> float:
-        return self._latitude
-
-    @property
-    def longitude(self) -> float:
-        return self._longitude
-
-    @property
     def location(self) -> tuple[float, float]:
-        return (self._latitude, self._longitude)
+        return self._location
 
     @property
-    def open_time(self) -> time:
-        return self._open_time
-
-    @property
-    def close_time(self) -> time:
-        return self._close_time
+    def operator(self) -> str:
+        return self._operator
 
     @property
     def services(self) -> list[Service]:

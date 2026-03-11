@@ -58,7 +58,7 @@ class DBBroker:
             connection = self._get_connection()
             cursor = connection.cursor(dictionary=True)
 
-            self._logger.debug(f"Executing READ query: {query}", "" if not params else f" | Params: {params}")
+            self._logger.debug(f"Executing READ query: {query} {'' if not params else f' | Params: {params}'}")
 
             cursor.execute(query, params)
             result = cursor.fetchall()
@@ -84,7 +84,7 @@ class DBBroker:
             connection = self._get_connection()
             cursor = connection.cursor()
 
-            self._logger.debug(f"Executing WRITE query: {query}", "" if not params else f" | Params: {params}")
+            self._logger.debug(f"Executing WRITE query: {query} {'' if not params else f' | Params: {params}'}")
 
             cursor.execute(query, params)
             connection.commit()
@@ -117,7 +117,7 @@ class DBBroker:
             connection = self._get_connection()
             cursor = connection.cursor()
 
-            self._logger.debug(f"Executing batch WRITE query: {query} | Batch size: {len(params_list)}")
+            self._logger.debug(f"Executing batch WRITE query: {query} {'' if not params_list else f' | Batch size: {len(params_list)}'}")
 
             cursor.executemany(query, params_list)
             connection.commit()

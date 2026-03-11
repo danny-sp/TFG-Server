@@ -1,8 +1,5 @@
 from datetime import datetime
 
-from src.Domain.ev_userDAO import EVUserDAO
-from src.Domain.vehicleDAO import VehicleDAO
-
 from src.Domain.vehicle import Vehicle
 
 class EVUser:
@@ -17,21 +14,6 @@ class EVUser:
 
         if len(vehicles) == 0:
             self._vehicles = self._load_vehicles()
-
-        self._ev_userDAO = EVUserDAO()
-
-    def insert(self):
-        self._ev_userDAO.insert(self)
-
-    def update(self):
-        self._ev_userDAO.update(self)
-
-    def delete(self):
-        self._ev_userDAO.delete(self)
-
-    def _load_vehicles(self) -> list[Vehicle]:
-        vehicleDAO = VehicleDAO()
-        return vehicleDAO.read_by_user_id(self)
 
     ##############
     # PROPERTIES #

@@ -22,12 +22,19 @@ CREATE TABLE vehicles (
     ON UPDATE CASCADE ON DELETE SET NULL
 );
 
+CREATE TABLE operators (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  operator_name VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE charging_stations (
   id INT AUTO_INCREMENT PRIMARY KEY,
   station_name VARCHAR(100),
-  operator VARCHAR(100),
+  operator_id INT,
   location POINT NOT NULL,
-  SPATIAL INDEX(location)
+  SPATIAL INDEX(location),
+  FOREIGN KEY (operator_id) REFERENCES operators(id)
+    ON UPDATE CASCADE ON DELETE SET NULL
 );
 
 CREATE TABLE services (
@@ -46,36 +53,20 @@ CREATE TABLE services (
   SPATIAL INDEX(location)
 );
 
-CREATE TABLE charger_types (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  charger_name VARCHAR(50) NOT NULL,
-  max_kw_speed DECIMAL(5,2),
-  description TEXT
-);
-
 CREATE TABLE chargers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   charging_station_id INT NOT NULL,
-  charger_type_id INT NOT NULL,
   power_kw DECIMAL(5,2) NOT NULL,
   charger_busy BOOLEAN DEFAULT FALSE,
-  charger_active BOOLEAN DEFAULT TRUE,
   FOREIGN KEY (charging_station_id) REFERENCES charging_stations(id)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (charger_type_id) REFERENCES charger_types(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
 CREATE TABLE price_rates (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  charging_station_id INT NOT NULL,
-  charger_type_id INT NOT NULL,
-  price_per_kwh DECIMAL(6,2) NOT NULL,
-  begin_date DATETIME,
-  end_date DATETIME,
-  FOREIGN KEY (charging_station_id) REFERENCES charging_stations(id)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (charger_type_id) REFERENCES charger_types(id)
+  operator_id INT NOT NULL,
+  extra_per_kwh DECIMAL(6,2) NOT NULL,
+  FOREIGN KEY (operator_id) REFERENCES operators(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 

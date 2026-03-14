@@ -1,0 +1,2387 @@
+[
+  {
+    "battery_capacity_kWh": 37.8,
+    "efficiency_wh_per_km": 156,
+    "fast_charging_power_kw_dc": 67.0
+  },
+  {
+    "battery_capacity_kWh": 37.8,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 67.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 158,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 158,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 156,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 128,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 138,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 75.8,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 151,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 157,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 75.8,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 141,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 147,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 156,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 162,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 169,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 75.8,
+    "efficiency_wh_per_km": 166,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 75.8,
+    "efficiency_wh_per_km": 139,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 190.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 190.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 176,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 156,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 169,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 94.9,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 184,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 182,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 172,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 169,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 81.3,
+    "efficiency_wh_per_km": 197,
+    "fast_charging_power_kw_dc": 131.0
+  },
+  {
+    "battery_capacity_kWh": 67.1,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 95.0
+  },
+  {
+    "battery_capacity_kWh": 81.3,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 131.0
+  },
+  {
+    "battery_capacity_kWh": 81.3,
+    "efficiency_wh_per_km": 183,
+    "fast_charging_power_kw_dc": 131.0
+  },
+  {
+    "battery_capacity_kWh": 81.2,
+    "efficiency_wh_per_km": 172,
+    "fast_charging_power_kw_dc": 136.0
+  },
+  {
+    "battery_capacity_kWh": 81.2,
+    "efficiency_wh_per_km": 179,
+    "fast_charging_power_kw_dc": 136.0
+  },
+  {
+    "battery_capacity_kWh": 81.2,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 136.0
+  },
+  {
+    "battery_capacity_kWh": 81.2,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 136.0
+  },
+  {
+    "battery_capacity_kWh": 81.2,
+    "efficiency_wh_per_km": 167,
+    "fast_charging_power_kw_dc": 136.0
+  },
+  {
+    "battery_capacity_kWh": 81.2,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 136.0
+  },
+  {
+    "battery_capacity_kWh": 101.7,
+    "efficiency_wh_per_km": 208,
+    "fast_charging_power_kw_dc": 159.0
+  },
+  {
+    "battery_capacity_kWh": 101.7,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 159.0
+  },
+  {
+    "battery_capacity_kWh": 101.7,
+    "efficiency_wh_per_km": 172,
+    "fast_charging_power_kw_dc": 159.0
+  },
+  {
+    "battery_capacity_kWh": 108.9,
+    "efficiency_wh_per_km": 209,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 94.8,
+    "efficiency_wh_per_km": 193,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 109.1,
+    "efficiency_wh_per_km": 194,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 64.7,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 94.0
+  },
+  {
+    "battery_capacity_kWh": 64.7,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 94.0
+  },
+  {
+    "battery_capacity_kWh": 64.7,
+    "efficiency_wh_per_km": 147,
+    "fast_charging_power_kw_dc": 94.0
+  },
+  {
+    "battery_capacity_kWh": 64.7,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 94.0
+  },
+  {
+    "battery_capacity_kWh": 45.1,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 51.0
+  },
+  {
+    "battery_capacity_kWh": 60.5,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 44.9,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 44.9,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 60.5,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 65.0
+  },
+  {
+    "battery_capacity_kWh": 30.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 45.0
+  },
+  {
+    "battery_capacity_kWh": 43.2,
+    "efficiency_wh_per_km": 134,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 43.2,
+    "efficiency_wh_per_km": 139,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 61.4,
+    "efficiency_wh_per_km": 133,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 82.5,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 82.5,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 71.8,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 72.0
+  },
+  {
+    "battery_capacity_kWh": 87.0,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 82.5,
+    "efficiency_wh_per_km": 181,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 82.5,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 91.3,
+    "efficiency_wh_per_km": 182,
+    "fast_charging_power_kw_dc": 165.0
+  },
+  {
+    "battery_capacity_kWh": 108.8,
+    "efficiency_wh_per_km": 205,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 156,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 157,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 102.0,
+    "efficiency_wh_per_km": 192,
+    "fast_charging_power_kw_dc": 165.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 44.0,
+    "efficiency_wh_per_km": 135,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 44.0,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 135,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 122,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 119,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 217,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 202,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 219,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 204,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 128,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 58.3,
+    "efficiency_wh_per_km": 130,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 97.2,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 130.0
+  },
+  {
+    "battery_capacity_kWh": 73.7,
+    "efficiency_wh_per_km": 141,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 97.2,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 130.0
+  },
+  {
+    "battery_capacity_kWh": 25.0,
+    "efficiency_wh_per_km": 109,
+    "fast_charging_power_kw_dc": 29.0
+  },
+  {
+    "battery_capacity_kWh": 25.0,
+    "efficiency_wh_per_km": 114,
+    "fast_charging_power_kw_dc": 29.0
+  },
+  {
+    "battery_capacity_kWh": 29.0,
+    "efficiency_wh_per_km": 126,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 40.0,
+    "efficiency_wh_per_km": 129,
+    "fast_charging_power_kw_dc": 51.0
+  },
+  {
+    "battery_capacity_kWh": 81.0,
+    "efficiency_wh_per_km": 203,
+    "fast_charging_power_kw_dc": 65.0
+  },
+  {
+    "battery_capacity_kWh": 21.3,
+    "efficiency_wh_per_km": 112,
+    "fast_charging_power_kw_dc": 40.0
+  },
+  {
+    "battery_capacity_kWh": 37.3,
+    "efficiency_wh_per_km": 122,
+    "fast_charging_power_kw_dc": 67.0
+  },
+  {
+    "battery_capacity_kWh": 21.3,
+    "efficiency_wh_per_km": 112,
+    "fast_charging_power_kw_dc": 40.0
+  },
+  {
+    "battery_capacity_kWh": 37.3,
+    "efficiency_wh_per_km": 125,
+    "fast_charging_power_kw_dc": 67.0
+  },
+  {
+    "battery_capacity_kWh": 21.3,
+    "efficiency_wh_per_km": 112,
+    "fast_charging_power_kw_dc": 40.0
+  },
+  {
+    "battery_capacity_kWh": 37.3,
+    "efficiency_wh_per_km": 118,
+    "fast_charging_power_kw_dc": 67.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 124,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 43.8,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 135,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 163,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 153,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 139,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 137,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 88.0,
+    "efficiency_wh_per_km": 160,
+    "fast_charging_power_kw_dc": 105.0
+  },
+  {
+    "battery_capacity_kWh": 91.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 88.0,
+    "efficiency_wh_per_km": 147,
+    "fast_charging_power_kw_dc": 105.0
+  },
+  {
+    "battery_capacity_kWh": 91.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 91.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 91.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 91.0,
+    "efficiency_wh_per_km": 178,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 91.0,
+    "efficiency_wh_per_km": 178,
+    "fast_charging_power_kw_dc": 115.0
+  },
+  {
+    "battery_capacity_kWh": 72.6,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 72.6,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 43.6,
+    "efficiency_wh_per_km": 126,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 43.6,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 370,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 370,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 370,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 370,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 45.4,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 45.0
+  },
+  {
+    "battery_capacity_kWh": 59.3,
+    "efficiency_wh_per_km": 141,
+    "fast_charging_power_kw_dc": 56.0
+  },
+  {
+    "battery_capacity_kWh": 59.3,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 56.0
+  },
+  {
+    "battery_capacity_kWh": 83.5,
+    "efficiency_wh_per_km": 161,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 64.3,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 64.3,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 82.5,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 157,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 163,
+    "fast_charging_power_kw_dc": 190.0
+  },
+  {
+    "battery_capacity_kWh": 61.9,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 112.0,
+    "efficiency_wh_per_km": 217,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 76.5,
+    "efficiency_wh_per_km": 193,
+    "fast_charging_power_kw_dc": 112.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 194,
+    "fast_charging_power_kw_dc": 112.0
+  },
+  {
+    "battery_capacity_kWh": 46.0,
+    "efficiency_wh_per_km": 124,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 39.0,
+    "efficiency_wh_per_km": 119,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 80.0,
+    "efficiency_wh_per_km": 162,
+    "fast_charging_power_kw_dc": 205.0
+  },
+  {
+    "battery_capacity_kWh": 80.0,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 205.0
+  },
+  {
+    "battery_capacity_kWh": 80.0,
+    "efficiency_wh_per_km": 179,
+    "fast_charging_power_kw_dc": 205.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 117,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 106.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 106.0,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 106.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 48.4,
+    "efficiency_wh_per_km": 128,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 65.4,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 86.0
+  },
+  {
+    "battery_capacity_kWh": 84.7,
+    "efficiency_wh_per_km": 208,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 74.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 72.0,
+    "efficiency_wh_per_km": 156,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 78.0,
+    "efficiency_wh_per_km": 139,
+    "fast_charging_power_kw_dc": 105.0
+  },
+  {
+    "battery_capacity_kWh": 55.0,
+    "efficiency_wh_per_km": 133,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 78.0,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 105.0
+  },
+  {
+    "battery_capacity_kWh": 55.0,
+    "efficiency_wh_per_km": 134,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 78.0,
+    "efficiency_wh_per_km": 124,
+    "fast_charging_power_kw_dc": 105.0
+  },
+  {
+    "battery_capacity_kWh": 55.0,
+    "efficiency_wh_per_km": 128,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 80.0,
+    "efficiency_wh_per_km": 178,
+    "fast_charging_power_kw_dc": 205.0
+  },
+  {
+    "battery_capacity_kWh": 80.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 205.0
+  },
+  {
+    "battery_capacity_kWh": 80.0,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 205.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 140,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 73.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 194.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 190,
+    "fast_charging_power_kw_dc": 194.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 190,
+    "fast_charging_power_kw_dc": 194.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 171,
+    "fast_charging_power_kw_dc": 194.0
+  },
+  {
+    "battery_capacity_kWh": 64.8,
+    "efficiency_wh_per_km": 140,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 48.1,
+    "efficiency_wh_per_km": 122,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 69.9,
+    "efficiency_wh_per_km": 166,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 36.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 30.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 158,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 35.0
+  },
+  {
+    "battery_capacity_kWh": 109.0,
+    "efficiency_wh_per_km": 204,
+    "fast_charging_power_kw_dc": 259.0
+  },
+  {
+    "battery_capacity_kWh": 109.0,
+    "efficiency_wh_per_km": 266,
+    "fast_charging_power_kw_dc": 259.0
+  },
+  {
+    "battery_capacity_kWh": 109.0,
+    "efficiency_wh_per_km": 222,
+    "fast_charging_power_kw_dc": 259.0
+  },
+  {
+    "battery_capacity_kWh": 98.9,
+    "efficiency_wh_per_km": 198,
+    "fast_charging_power_kw_dc": 240.0
+  },
+  {
+    "battery_capacity_kWh": 98.9,
+    "efficiency_wh_per_km": 227,
+    "fast_charging_power_kw_dc": 240.0
+  },
+  {
+    "battery_capacity_kWh": 98.9,
+    "efficiency_wh_per_km": 198,
+    "fast_charging_power_kw_dc": 240.0
+  },
+  {
+    "battery_capacity_kWh": 112.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 184.0
+  },
+  {
+    "battery_capacity_kWh": 92.0,
+    "efficiency_wh_per_km": 130,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 92.0,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 65.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 74.4,
+    "efficiency_wh_per_km": 168,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 74.4,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 68.0
+  },
+  {
+    "battery_capacity_kWh": 61.7,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 116.0
+  },
+  {
+    "battery_capacity_kWh": 74.4,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 61.7,
+    "efficiency_wh_per_km": 160,
+    "fast_charging_power_kw_dc": 116.0
+  },
+  {
+    "battery_capacity_kWh": 57.4,
+    "efficiency_wh_per_km": 151,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 46.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 53.0
+  },
+  {
+    "battery_capacity_kWh": 47.1,
+    "efficiency_wh_per_km": 139,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 62.1,
+    "efficiency_wh_per_km": 134,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 68.3,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 82.0
+  },
+  {
+    "battery_capacity_kWh": 49.0,
+    "efficiency_wh_per_km": 153,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 83.0,
+    "efficiency_wh_per_km": 198,
+    "fast_charging_power_kw_dc": 190.0
+  },
+  {
+    "battery_capacity_kWh": 83.0,
+    "efficiency_wh_per_km": 182,
+    "fast_charging_power_kw_dc": 217.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 220,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 84.0,
+    "efficiency_wh_per_km": 195,
+    "fast_charging_power_kw_dc": 103.0
+  },
+  {
+    "battery_capacity_kWh": 66.0,
+    "efficiency_wh_per_km": 138,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 75.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 85.0,
+    "efficiency_wh_per_km": 122,
+    "fast_charging_power_kw_dc": 235.0
+  },
+  {
+    "battery_capacity_kWh": 85.0,
+    "efficiency_wh_per_km": 126,
+    "fast_charging_power_kw_dc": 235.0
+  },
+  {
+    "battery_capacity_kWh": 66.5,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 70.5,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 66.5,
+    "efficiency_wh_per_km": 162,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 66.5,
+    "efficiency_wh_per_km": 162,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 70.5,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 66.5,
+    "efficiency_wh_per_km": 168,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 66.5,
+    "efficiency_wh_per_km": 168,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 89.0,
+    "efficiency_wh_per_km": 163,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 173,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 173,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 207,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 208,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 182,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 189,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 187,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 214,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 90.6,
+    "efficiency_wh_per_km": 242,
+    "fast_charging_power_kw_dc": 141.0
+  },
+  {
+    "battery_capacity_kWh": 96.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 130.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 180,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 173,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 180,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 180,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 222,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 199,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 195,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 199,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 199,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 118.0,
+    "efficiency_wh_per_km": 211,
+    "fast_charging_power_kw_dc": 160.0
+  },
+  {
+    "battery_capacity_kWh": 45.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 45.0,
+    "efficiency_wh_per_km": 167,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 282,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 282,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 249,
+    "fast_charging_power_kw_dc": 96.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 276,
+    "fast_charging_power_kw_dc": 96.0
+  },
+  {
+    "battery_capacity_kWh": 116.0,
+    "efficiency_wh_per_km": 267,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 254,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 259,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 260,
+    "fast_charging_power_kw_dc": 96.0
+  },
+  {
+    "battery_capacity_kWh": 38.5,
+    "efficiency_wh_per_km": 129,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 49.2,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 49.2,
+    "efficiency_wh_per_km": 129,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 36.6,
+    "efficiency_wh_per_km": 125,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 49.2,
+    "efficiency_wh_per_km": 135,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 49.2,
+    "efficiency_wh_per_km": 127,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 64.6,
+    "efficiency_wh_per_km": 140,
+    "fast_charging_power_kw_dc": 94.0
+  },
+  {
+    "battery_capacity_kWh": 64.6,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 94.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 170,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 73.5,
+    "efficiency_wh_per_km": 181,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 185,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 73.5,
+    "efficiency_wh_per_km": 198,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 185,
+    "fast_charging_power_kw_dc": 190.0
+  },
+  {
+    "battery_capacity_kWh": 73.5,
+    "efficiency_wh_per_km": 196,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 167,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 73.5,
+    "efficiency_wh_per_km": 175,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 178,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 73.5,
+    "efficiency_wh_per_km": 169,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 90.0,
+    "efficiency_wh_per_km": 178,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 73.5,
+    "efficiency_wh_per_km": 191,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 63.0,
+    "efficiency_wh_per_km": 175,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 87.0,
+    "efficiency_wh_per_km": 169,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 87.0,
+    "efficiency_wh_per_km": 190,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 87.0,
+    "efficiency_wh_per_km": 209,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 45.0,
+    "efficiency_wh_per_km": 158,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 45.0,
+    "efficiency_wh_per_km": 173,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 61.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 128,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 123,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 131,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 48.1,
+    "efficiency_wh_per_km": 120,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 44.0,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 60.0
+  },
+  {
+    "battery_capacity_kWh": 73.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 82.2,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 126,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 217,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 202,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 219,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 204,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 125,
+    "fast_charging_power_kw_dc": 85.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 48.1,
+    "efficiency_wh_per_km": 120,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 73.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 73.0,
+    "efficiency_wh_per_km": 195,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 96.9,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 124,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 50.8,
+    "efficiency_wh_per_km": 127,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 58.3,
+    "efficiency_wh_per_km": 129,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 73.0,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 73.0,
+    "efficiency_wh_per_km": 203,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 96.9,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 153,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 217,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 202,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 219,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 204,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 130,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 67.0,
+    "efficiency_wh_per_km": 129,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 107.0,
+    "efficiency_wh_per_km": 183,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 107.0,
+    "efficiency_wh_per_km": 194,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 107.0,
+    "efficiency_wh_per_km": 166,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 157,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 184,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 186,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 183,
+    "fast_charging_power_kw_dc": 200.0
+  },
+  {
+    "battery_capacity_kWh": 82.3,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 82.3,
+    "efficiency_wh_per_km": 172,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 175,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 82.3,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 177,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 186,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 82.3,
+    "efficiency_wh_per_km": 183,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 176,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 185,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 168,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 176,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 82.3,
+    "efficiency_wh_per_km": 173,
+    "fast_charging_power_kw_dc": 195.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 184,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 180,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 183,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 97.0,
+    "efficiency_wh_per_km": 184,
+    "fast_charging_power_kw_dc": 281.0
+  },
+  {
+    "battery_capacity_kWh": 40.0,
+    "efficiency_wh_per_km": 124,
+    "fast_charging_power_kw_dc": 55.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 127,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 40.0,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 55.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 129,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 45.0,
+    "efficiency_wh_per_km": 158,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 45.0,
+    "efficiency_wh_per_km": 170,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 125,
+    "fast_charging_power_kw_dc": 88.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 133,
+    "fast_charging_power_kw_dc": 88.0
+  },
+  {
+    "battery_capacity_kWh": 60.0,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 75.0
+  },
+  {
+    "battery_capacity_kWh": 87.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 95.0
+  },
+  {
+    "battery_capacity_kWh": 102.0,
+    "efficiency_wh_per_km": 192,
+    "fast_charging_power_kw_dc": 126.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 151,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 141,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 141,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 138,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 147,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 81.0,
+    "efficiency_wh_per_km": 166,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 50.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 141,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 47.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 65.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 47.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 65.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 47.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 65.0
+  },
+  {
+    "battery_capacity_kWh": 62.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 230.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 230.0
+  },
+  {
+    "battery_capacity_kWh": 74.4,
+    "efficiency_wh_per_km": 160,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 230.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 230.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 174,
+    "fast_charging_power_kw_dc": 230.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 75.0,
+    "efficiency_wh_per_km": 119,
+    "fast_charging_power_kw_dc": 124.0
+  },
+  {
+    "battery_capacity_kWh": 75.0,
+    "efficiency_wh_per_km": 117,
+    "fast_charging_power_kw_dc": 124.0
+  },
+  {
+    "battery_capacity_kWh": 75.0,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 124.0
+  },
+  {
+    "battery_capacity_kWh": 60.5,
+    "efficiency_wh_per_km": 116,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 150,
+    "fast_charging_power_kw_dc": 140.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 158,
+    "fast_charging_power_kw_dc": 140.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 140.0
+  },
+  {
+    "battery_capacity_kWh": 95.0,
+    "efficiency_wh_per_km": 180,
+    "fast_charging_power_kw_dc": 140.0
+  },
+  {
+    "battery_capacity_kWh": 75.0,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 124.0
+  },
+  {
+    "battery_capacity_kWh": 75.0,
+    "efficiency_wh_per_km": 121,
+    "fast_charging_power_kw_dc": 124.0
+  },
+  {
+    "battery_capacity_kWh": 60.5,
+    "efficiency_wh_per_km": 121,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 204,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 46.3,
+    "efficiency_wh_per_km": 217,
+    "fast_charging_power_kw_dc": 78.0
+  },
+  {
+    "battery_capacity_kWh": 68.0,
+    "efficiency_wh_per_km": 202,
+    "fast_charging_power_kw_dc": 79.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 50.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 64.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 100.0
+  },
+  {
+    "battery_capacity_kWh": 87.7,
+    "efficiency_wh_per_km": 186,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 87.7,
+    "efficiency_wh_per_km": 196,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 86.0,
+    "efficiency_wh_per_km": 182,
+    "fast_charging_power_kw_dc": 145.0
+  },
+  {
+    "battery_capacity_kWh": 86.0,
+    "efficiency_wh_per_km": 190,
+    "fast_charging_power_kw_dc": 145.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 194,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 187,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 178,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 131,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 131,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 59.0,
+    "efficiency_wh_per_km": 136,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 138,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 134,
+    "fast_charging_power_kw_dc": 90.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 149,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 143,
+    "fast_charging_power_kw_dc": 87.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 138,
+    "fast_charging_power_kw_dc": 120.0
+  },
+  {
+    "battery_capacity_kWh": 52.0,
+    "efficiency_wh_per_km": 142,
+    "fast_charging_power_kw_dc": 87.0
+  },
+  {
+    "battery_capacity_kWh": 86.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 145.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 132,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 86.0,
+    "efficiency_wh_per_km": 133,
+    "fast_charging_power_kw_dc": 145.0
+  },
+  {
+    "battery_capacity_kWh": 86.0,
+    "efficiency_wh_per_km": 147,
+    "fast_charging_power_kw_dc": 145.0
+  },
+  {
+    "battery_capacity_kWh": 77.0,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 86.0,
+    "efficiency_wh_per_km": 125,
+    "fast_charging_power_kw_dc": 145.0
+  },
+  {
+    "battery_capacity_kWh": 67.0,
+    "efficiency_wh_per_km": 151,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 155,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 88.0,
+    "efficiency_wh_per_km": 135,
+    "fast_charging_power_kw_dc": 190.0
+  },
+  {
+    "battery_capacity_kWh": 102.0,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 225.0
+  },
+  {
+    "battery_capacity_kWh": 102.0,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 225.0
+  },
+  {
+    "battery_capacity_kWh": 65.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 114.0
+  },
+  {
+    "battery_capacity_kWh": 49.0,
+    "efficiency_wh_per_km": 147,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 65.0,
+    "efficiency_wh_per_km": 138,
+    "fast_charging_power_kw_dc": 113.0
+  },
+  {
+    "battery_capacity_kWh": 65.0,
+    "efficiency_wh_per_km": 145,
+    "fast_charging_power_kw_dc": 113.0
+  },
+  {
+    "battery_capacity_kWh": 67.0,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 110.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 163,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 79.0,
+    "efficiency_wh_per_km": 163,
+    "fast_charging_power_kw_dc": 125.0
+  },
+  {
+    "battery_capacity_kWh": 100.0,
+    "efficiency_wh_per_km": 182,
+    "fast_charging_power_kw_dc": 140.0
+  },
+  {
+    "battery_capacity_kWh": 107.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 107.0,
+    "efficiency_wh_per_km": 188,
+    "fast_charging_power_kw_dc": 150.0
+  },
+  {
+    "battery_capacity_kWh": 100.0,
+    "efficiency_wh_per_km": 200,
+    "fast_charging_power_kw_dc": 80.0
+  },
+  {
+    "battery_capacity_kWh": 87.5,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 180.0
+  },
+  {
+    "battery_capacity_kWh": 87.5,
+    "efficiency_wh_per_km": 154,
+    "fast_charging_power_kw_dc": 180.0
+  },
+  {
+    "battery_capacity_kWh": 66.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 140.0
+  },
+  {
+    "battery_capacity_kWh": 93.1,
+    "efficiency_wh_per_km": 179,
+    "fast_charging_power_kw_dc": 224.0
+  },
+  {
+    "battery_capacity_kWh": 93.1,
+    "efficiency_wh_per_km": 163,
+    "fast_charging_power_kw_dc": 224.0
+  },
+  {
+    "battery_capacity_kWh": 75.8,
+    "efficiency_wh_per_km": 165,
+    "fast_charging_power_kw_dc": 170.0
+  },
+  {
+    "battery_capacity_kWh": 82.7,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 138.0
+  },
+  {
+    "battery_capacity_kWh": 82.7,
+    "efficiency_wh_per_km": 144,
+    "fast_charging_power_kw_dc": 138.0
+  },
+  {
+    "battery_capacity_kWh": 82.7,
+    "efficiency_wh_per_km": 164,
+    "fast_charging_power_kw_dc": 138.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 152,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 159,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 162,
+    "fast_charging_power_kw_dc": 135.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 153,
+    "fast_charging_power_kw_dc": 260.0
+  },
+  {
+    "battery_capacity_kWh": 94.0,
+    "efficiency_wh_per_km": 173,
+    "fast_charging_power_kw_dc": 260.0
+  },
+  {
+    "battery_capacity_kWh": 71.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 240.0
+  },
+  {
+    "battery_capacity_kWh": 49.0,
+    "efficiency_wh_per_km": 148,
+    "fast_charging_power_kw_dc": 70.0
+  },
+  {
+    "battery_capacity_kWh": 65.0,
+    "efficiency_wh_per_km": 146,
+    "fast_charging_power_kw_dc": 114.0
+  },
+  {
+    "battery_capacity_kWh": 65.0,
+    "efficiency_wh_per_km": 153,
+    "fast_charging_power_kw_dc": 114.0
+  },
+  {
+    "battery_capacity_kWh": 41.2,
+    "efficiency_wh_per_km": 125,
+    "fast_charging_power_kw_dc": 65.0
+  }
+]

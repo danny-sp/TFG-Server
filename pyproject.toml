@@ -5,8 +5,10 @@ description = "Program to be executed on the server side of the TFG project."
 readme = "README.md"
 requires-python = ">=3.11"
 dependencies = [
+    "faker>=40.11.0",
     "geopy>=2.4.1",
     "ipykernel>=7.2.0",
+    "kagglehub>=1.0.0",
     "mariadb>=1.1.14",
     "osmium>=4.3.0",
     "paho-mqtt>=2.1.0",

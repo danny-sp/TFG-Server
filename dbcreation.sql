@@ -1,5 +1,7 @@
-CREATE DATABASE IF NOT EXISTS ev_charging_system
-  CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+DROP DATABASE IF EXISTS ev_charging_system;
+CREATE DATABASE ev_charging_system
+  CHARACTER SET utf8mb4 
+  COLLATE utf8mb4_general_ci;
 
 USE ev_charging_system;
 
@@ -14,6 +16,7 @@ CREATE TABLE ev_users (
 
 CREATE TABLE vehicles (
   plate VARCHAR(15) PRIMARY KEY,
+  consumption_wh_km DECIMAL(6,2) NOT NULL,
   capacity_kwh DECIMAL(6,2) NOT NULL,
   max_kw_speed DECIMAL(5,2) NOT NULL,
   user_id INT,
@@ -98,14 +101,3 @@ CREATE TABLE charging_sessions (
   FOREIGN KEY (charger_id) REFERENCES chargers(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
-
--- EXAMPLE DATA INSERTION
-INSERT INTO ev_users (username, email, phone) VALUES
-('John Doe', 'john.doe@example.com', '123-456-7890'),
-('Jane Smith', 'jane.smith@example.com', '098-765-4321');
-
-INSERT INTO vehicles (plate, capacity_kwh, max_kw_speed, user_id) VALUES
-('ABC123', 75.00, 150.00, 1),
-('XYZ789', 60.00, 120.00, 2);
-
--- End of SQL Script for EV Charging System Database Creation

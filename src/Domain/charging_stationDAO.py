@@ -43,15 +43,15 @@ class ChargingStationDAO:
         polygon_wkt = f"POLYGON(({min_lon} {min_lat}, {max_lon} {min_lat}, {max_lon} {max_lat}, {min_lon} {max_lat}, {min_lon} {min_lat}))"
 
         query = """
-        SELECT id, station_name, operator, 
-               ST_Y(location) as latitude, 
-               ST_X(location) as longitude
-        FROM charging_stations
-        WHERE MBRContains(
-            ST_GeomFromText(?),
-            location
-        )
-        """
+            SELECT cs.id, cs.station_name, o.operator_name as operator, 
+                   ST_Y(cs.location) as latitude, 
+                   ST_X(cs.location) as longitude
+            FROM charging_stations cs, operators o
+            WHERE o.id = cs.operator_id AND MBRContains(
+                ST_GeomFromText(?),
+                cs.location
+            )
+            """
 
         params = (polygon_wkt,)
 
@@ -60,11 +60,11 @@ class ChargingStationDAO:
 
     def read_by_id(self, station_id: int) -> ChargingStation:
         query = """
-        SELECT id, station_name, operator, 
-               ST_Y(location) as latitude, 
-               ST_X(location) as longitude
-        FROM charging_stations 
-        WHERE id = ?
+        SELECT cs.id, cs.station_name, o.operator_name as operator, 
+               ST_Y(cs.location) as latitude, 
+               ST_X(cs.location) as longitude
+        FROM charging_stations cs, operators o
+        WHERE o.id = cs.operator_id AND cs.id = ?
         """
         rows = self._db.execute_read_query(query, (station_id,))
         return self._row_to_charging_station(rows[0]) if rows else None

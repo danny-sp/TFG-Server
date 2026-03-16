@@ -52,15 +52,11 @@ class VehicleDAO:
         rows = self._db.execute_read_query("SELECT * FROM vehicles WHERE user_id = ?", (user.id,))
         return [self._row_to_vehicle(row, user) for row in rows] if rows else []
 
-    def _row_to_vehicle(self, row: dict, user: EVUser = None) -> Vehicle:
-        # if user is None:
-        #     userDAO = EVUserDAO()
-        #     user = userDAO.read_by_id(row['user_id'])
-
+    def _row_to_vehicle(self, row: dict) -> Vehicle:
         return Vehicle(
             plate=row['plate'],
+            consumption_wh_km=row['consumption_wh_km'],
             capacity_kwh=row['capacity_kwh'],
             max_kw_speed=row['max_kw_speed'],
-            user=user,
             reg_date=row['registration_date']
         )

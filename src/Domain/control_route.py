@@ -7,7 +7,7 @@ from src.Utils.logger import setup_logger
 
 class ControlRoute:
 
-    _logger = setup_logger("Controller")
+    _logger = setup_logger("ControlRoute")
 
     @classmethod
     def get_route_str(cls, coords: Tuple[float, float], destination: str):
@@ -35,7 +35,7 @@ class ControlRoute:
         start_coords = coords
         end_coords = destination
 
-        cls._logger.debug(f"Fetching route from {start_coords} to {end_coords} for custom coordinates")
+        # cls._logger.debug(f"Fetching route from {start_coords} to {end_coords} for custom coordinates")
         response = RouteClient.get_route_geometry(start_coords, end_coords)
 
         if response is None:
@@ -75,7 +75,6 @@ class ControlRoute:
         url = url[:-1]  # Remove semicolon
         url += "?overview=full"
 
-        cls._logger.debug(f"Fetching duration for route with {len(coords)} waypoints")
         response = RouteClient.get_route_geometry_list(url)
 
         if response is None:

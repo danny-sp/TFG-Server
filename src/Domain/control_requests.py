@@ -5,6 +5,7 @@ from src.Domain.control_route import ControlRoute
 
 from src.Domain.bookingDAO import BookingDAO
 from src.Domain.charging_stationDAO import ChargingStationDAO
+from src.Domain.vehicleDAO import VehicleDAO
 
 from src.Domain.option import Option
 from src.Domain.request import Request
@@ -40,18 +41,36 @@ class ControlRequests:
         stations_in_area = charging_station_dao.read_stations_in_area(min_lat, max_lat, min_lon, max_lon)
         cls._logger.info(f"Found {len(stations_in_area)} charging stations in the area for request {request.uuid}")
 
+        vehicle_dao = VehicleDAO()
+        vehicle = vehicle_dao.read_by_plate(request.plate)
+        if not vehicle:
+            cls._logger.error(f"Vehicle with plate {request.plate} not found in database. Cannot process request {request.uuid}.")
+            return "Vehicle not found. Please register your vehicle before making a request."
+
         options = []
         o_dicts = []
+
+        # Assuming a minimum percent of 20% for the vehicle to be able to reach a charging station
+        max_distance = vehicle.distance_percent(request.current_percent, 20)
+
         for s in stations_in_area:
-            start_time = datetime.now()
+            _, distance, duration = ControlRoute.get_route_coords(request.position, s.location)
+            distance /= 1000
+            if distance > max_distance:
+                continue
+
+            start_time = datetime.now() + timedelta(seconds=duration)
+            # TODO: Charging to the 100% ?
             end_time = start_time + timedelta(seconds=7200)
+
             o = Option(request.uuid, s, None, None, start_time, end_time)
             options.append(o)
             o_dicts.append(o.to_dict())
+        cls._logger.debug(f"{len(stations_in_area)} - {len(options)} = {len(stations_in_area) - len(options)} unfeasible stations based on distance and vehicle {request.plate}.")
 
         o_dicts.sort(key=lambda x: cls.calculate_delay(request, remaining_duration, x), reverse=True)
 
-        o_dicts = o_dicts[:30]
+        # o_dicts = o_dicts[:30]
 
         o_json = json.dumps(o_dicts)
         cls._logger.info(f"Generated {len(options)} options for request {request.uuid}")

@@ -20,8 +20,8 @@ def setup_logger(name: str) -> logging.Logger:
     logger.setLevel(log_level)
 
     # Create formatters
-    # Format: [Time] [Logger Name] [Level]: Message
-    log_format = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s: %(message)s')
+    # Format: [Time] [Logger Name] [Line] [Level]: Message
+    log_format = logging.Formatter('%(asctime)s - %(name)s - %(lineno)d - %(levelname)s: %(message)s')
 
     # Create console handler
     c_handler = logging.StreamHandler(sys.stdout)

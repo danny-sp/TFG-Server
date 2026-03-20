@@ -51,16 +51,24 @@ class ServiceDAO:
         rows = self._db.execute_read_query("SELECT * FROM services WHERE id = ?", (id,))
         return self._row_to_service(rows[0]) if rows else None
 
-    def _row_to_service(self, row: dict, charging_station: ChargingStation = None) -> Service:
-        # if charging_station is None:
-        #     charging_stationDAO = ChargingStationDAO()
-        #     charging_station = charging_stationDAO.read_by_id(row['charging_station_id'])
+    def read_near_point(self, location: tuple[float, float], max_distance: float = 200) -> list[Service]:
+        station_location = f"POINT({location[1]} {location[0]})"
+        query = """
+        SELECT s.id, s.service_name, s.service_type,
+                ST_Y(s.location) as latitude,
+                ST_X(s.location) as longitude
+        FROM services s
+        WHERE ST_Distance(ST_GeomFromText(?), s.location) < ?
+        """
 
+        params = (station_location, max_distance)
+        rows = self._db.execute_read_query(query, params)
+        return [self._row_to_service(row) for row in rows]
+
+    def _row_to_service(self, row: dict) -> Service:
         return Service(
             id=row['id'],
             name=row['service_name'],
             type=ServiceType(row['service_type']),
-            open_time=row['open_time'],
-            close_time=row['close_time'],
-            charging_station=charging_station
+            location=(row['latitude'], row['longitude'])
         )

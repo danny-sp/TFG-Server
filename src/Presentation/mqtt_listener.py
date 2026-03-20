@@ -115,6 +115,7 @@ class MqttListener:
         options = ControlRequests.process_request(data)
 
         self.client.publish(f"response/{data['plate']}", options, qos=1)
+        self._logger.info(f"Published response for plate {data['plate']} to topic response/{data['plate']}")
 
     def _handle_cars_new(self, data: dict):
         self._logger.info(f"Processing 'cars/new' request for: {data.get('car_id', 'unknown')}")

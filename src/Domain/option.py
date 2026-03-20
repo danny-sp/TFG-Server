@@ -1,11 +1,12 @@
 from datetime import datetime
 
+from src.Domain.charger_type import ChargerType
 from src.Domain.charging_station import ChargingStation
 from src.Domain.price_rate import PriceRate
-from src.Domain.charger_type import ChargerType
+from src.Domain.service import Service
 
 class Option:
-    def __init__(self, request_id: int, charging_station: ChargingStation, price_rate: PriceRate, charger_type: ChargerType, start_time: datetime, end_time: datetime):
+    def __init__(self, request_id: int, charging_station: ChargingStation, price_rate: PriceRate, charger_type: ChargerType, start_time: datetime, end_time: datetime, services_nearby: list[Service] = []):
         self._request_id = request_id
         self._charging_station = charging_station
         self._price_rate = price_rate
@@ -15,7 +16,7 @@ class Option:
         self._duration_hours = (end_time - start_time).total_seconds() / 3600
         # self._price = self._duration_hours * self._price_rate.price_per_kwh
         self._price = 40.7
-
+        self._services_nearby = services_nearby
 
     def to_dict(self):
         return {
@@ -41,7 +42,8 @@ class Option:
             "start_time": self._start_time.isoformat(),
             "end_time": self._end_time.isoformat(),
             "duration_hours": self._duration_hours,
-            "price": self._price
+            "price": self._price,
+            "services_nearby": [service.type.name for service in self._services_nearby]
         }
 
     ##############
@@ -78,3 +80,10 @@ class Option:
     @property
     def price(self) -> float:
         return self._price
+
+    @property
+    def services_nearby(self) -> list[Service]:
+        return self._services_nearby
+    @services_nearby.setter
+    def services_nearby(self, services: list[Service]):
+        self._services_nearby = services

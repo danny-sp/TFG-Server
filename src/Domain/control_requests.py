@@ -5,6 +5,7 @@ from src.Domain.control_route import ControlRoute
 
 from src.Domain.bookingDAO import BookingDAO
 from src.Domain.charging_stationDAO import ChargingStationDAO
+from src.Domain.serviceDAO import ServiceDAO
 from src.Domain.vehicleDAO import VehicleDAO
 
 from src.Domain.option import Option
@@ -48,7 +49,6 @@ class ControlRequests:
             return "Vehicle not found. Please register your vehicle before making a request."
 
         options = []
-        o_dicts = []
 
         # Assuming a minimum percent of 20% for the vehicle to be able to reach a charging station
         max_distance = vehicle.distance_percent(request.current_percent, 20)
@@ -65,12 +65,17 @@ class ControlRequests:
 
             o = Option(request.uuid, s, None, None, start_time, end_time)
             options.append(o)
+        cls._logger.info(f"{len(stations_in_area)} - {len(options)} = {len(stations_in_area) - len(options)} unfeasible stations based on distance and vehicle {request.plate}.")
+
+        o_dicts = []
+
+        options.sort(key=lambda x: cls.calculate_delay(request, remaining_duration, x), reverse=True)
+        options = options[:10]
+
+        service_dao = ServiceDAO()
+        for o in options:
+            o.services_nearby = service_dao.read_near_point(o.charging_station.location, 100)
             o_dicts.append(o.to_dict())
-        cls._logger.debug(f"{len(stations_in_area)} - {len(options)} = {len(stations_in_area) - len(options)} unfeasible stations based on distance and vehicle {request.plate}.")
-
-        o_dicts.sort(key=lambda x: cls.calculate_delay(request, remaining_duration, x), reverse=True)
-
-        # o_dicts = o_dicts[:30]
 
         o_json = json.dumps(o_dicts)
         cls._logger.info(f"Generated {len(options)} options for request {request.uuid}")
@@ -78,18 +83,18 @@ class ControlRequests:
         return o_json
 
     @classmethod
-    def calculate_delay(cls, request: Request, remaining_duration: float, option: dict) -> float:
+    def calculate_delay(cls, request: Request, remaining_duration: float, option: Option) -> float:
         source = request.position
-        stop = option["charging_station"]["location"]
+        stop = option.charging_station.location
         destination = request.destination
         route = [source, stop, destination]
 
-        charging_time = option["duration_hours"] * 3600
+        charging_time = option.duration_hours * 3600
 
         try:
             new_duration = ControlRoute.get_duration_list(route) + charging_time
         except Exception as e:
-            cls._logger.error(f"Error occurred while calculating duration for option {option['request_id']}: {e}")
+            cls._logger.error(f"Error occurred while calculating duration for option {option.request_id}: {e}")
             return float('inf')
 
         delay = new_duration - remaining_duration

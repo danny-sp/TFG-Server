@@ -7,6 +7,7 @@ class Service:
         self._id = id
         self._name = name
         self._type = type
+        self._location = location
 
     ##############
     # PROPERTIES #
@@ -22,3 +23,7 @@ class Service:
     @property
     def type(self) -> ServiceType:
         return self._type
+
+    @property
+    def location(self) -> Tuple[int, int]:
+        return self._location

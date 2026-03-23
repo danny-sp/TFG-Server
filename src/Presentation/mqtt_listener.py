@@ -14,6 +14,7 @@ from src.Utils.logger import setup_logger
 class MqttListener:
     def __init__(self):
         self._logger = setup_logger("MqttListener")
+        self._publish_ack_timeout = float(os.getenv("MQTT_PUBLISH_ACK_TIMEOUT", "8"))
 
         self.client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=os.getenv("MQTT_CLIENT_ID", "serv_mqtt"))
         # self.client.username_pw_set(os.getenv("MQTT_USER"), os.getenv("MQTT_PASSWORD"))
@@ -26,6 +27,7 @@ class MqttListener:
         self.client.on_connect = self._on_connect
         self.client.on_message = self._on_message
         self.client.on_disconnect = self._on_disconnect
+        self.client.on_publish = self._on_publish
 
         self.topics: Dict[str, Callable[[dict], None]] = {
             "vehicles/requests": self._handle_request,
@@ -71,6 +73,12 @@ class MqttListener:
         """
         self._logger.warning(f"Disconnected from MQTT Broker. Reason code: {reason_code}")
 
+    def _on_publish(self, client, userdata, mid, reason_code, properties=None):
+        """
+        Callback when broker acknowledges a publish (PUBACK for QoS 1).
+        """
+        self._logger.debug(f"Publish acknowledged by broker. mid={mid}, reason_code={reason_code}")
+
     def _on_message(self, client, userdata, msg):
         """
         Main Entry Point. 
@@ -114,8 +122,30 @@ class MqttListener:
 
         options = ControlRequests.process_request(data)
 
-        self.client.publish(f"response/{data['plate']}", options, qos=1)
-        self._logger.info(f"Published response for plate {data['plate']} to topic response/{data['plate']}")
+        topic = f"response/{data['plate']}"
+        payload_bytes = options.encode("utf-8") if isinstance(options, str) else options
+        payload_len = len(payload_bytes)
+
+        msg_info = self.client.publish(topic, options, qos=1)
+        if msg_info.rc != mqtt.MQTT_ERR_SUCCESS:
+            self._logger.error(
+                f"Publish failed for plate {data['plate']} to topic {topic}. "
+                f"rc={msg_info.rc}, payload_bytes={payload_len}"
+            )
+            return
+
+        msg_info.wait_for_publish(timeout=self._publish_ack_timeout)
+        if not msg_info.is_published():
+            self._logger.error(
+                f"Publish timed out waiting PUBACK for plate {data['plate']} to topic {topic}. "
+                f"mid={msg_info.mid}, payload_bytes={payload_len}"
+            )
+            return
+
+        self._logger.info(
+            f"Published response for plate {data['plate']} to topic {topic}. "
+            f"mid={msg_info.mid}, payload_bytes={payload_len}"
+        )
 
     def _handle_cars_new(self, data: dict):
         self._logger.info(f"Processing 'cars/new' request for: {data.get('car_id', 'unknown')}")

@@ -1,21 +1,20 @@
-from datetime import datetime
+from datetime import datetime, timedelta
 
-from src.Domain.charger_type import ChargerType
 from src.Domain.charging_station import ChargingStation
 from src.Domain.price_rate import PriceRate
 from src.Domain.service import Service
 
 class Option:
-    def __init__(self, request_id: int, charging_station: ChargingStation, price_rate: PriceRate, charger_type: ChargerType, start_time: datetime, end_time: datetime, services_nearby: list[Service] = []):
+    def __init__(self, request_id: int, charging_station: ChargingStation, price_rate: PriceRate, start_time: datetime, duration_hours: float, kw_speed: float, delay_hours: float=0.0, services_nearby: list[Service] = []):
         self._request_id = request_id
         self._charging_station = charging_station
-        self._price_rate = price_rate
-        self._charger_type = charger_type
         self._start_time = start_time
-        self._end_time = end_time
-        self._duration_hours = (end_time - start_time).total_seconds() / 3600
+        self._end_time = start_time + timedelta(hours=duration_hours)
+        self._duration_hours = duration_hours
+        self._delay_hours = delay_hours
         # self._price = self._duration_hours * self._price_rate.price_per_kwh
         self._price = 40.7
+        self._kw_speed = kw_speed
         self._services_nearby = services_nearby
 
     def to_dict(self):
@@ -27,23 +26,13 @@ class Option:
                 "location": self._charging_station.location,
                 "operator": self._charging_station.operator
             },
-            "price_rate": {
-                # "id": self._price_rate.id,
-                # "price_per_kwh": self._price_rate.price_per_kwh
-                "id": 1,
-                "price_per_kwh": 0.20
-            },
-            "charger_type": {
-                # "id": self._charger_type.id,
-                # "name": self._charger_type.name
-                "id": 1,
-                "name": "Type 2"
-            },
+            "price": float(self._price),
+            "kw_speed": float(self._kw_speed),
             "start_time": self._start_time.isoformat(),
             "end_time": self._end_time.isoformat(),
-            "duration_hours": self._duration_hours,
-            "price": self._price,
-            "services_nearby": [service.type.name for service in self._services_nearby]
+            "duration_hours": float(self._duration_hours),
+            "delay_hours": float(self._delay_hours),
+            "services_nearby": list(set(service.type for service in self._services_nearby))
         }
 
     ##############
@@ -58,12 +47,12 @@ class Option:
         return self._charging_station
 
     @property
-    def price_rate(self) -> PriceRate:
-        return self._price_rate
+    def price(self) -> float:
+        return self._price
 
     @property
-    def charger_type(self) -> ChargerType:
-        return self._charger_type
+    def kw_speed(self) -> float:
+        return self._kw_speed
 
     @property
     def start_time(self) -> datetime:
@@ -76,6 +65,13 @@ class Option:
     @property
     def duration_hours(self) -> float:
         return self._duration_hours
+
+    @property
+    def delay_hours(self) -> float:
+        return self._delay_hours
+    @delay_hours.setter
+    def delay_hours(self, delay: float):
+        self._delay_hours = delay
 
     @property
     def price(self) -> float:

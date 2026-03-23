@@ -77,6 +77,7 @@ CREATE TABLE bookings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   vehicle_plate VARCHAR(15) NOT NULL,
   booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  charger_id INT NOT NULL,
   start_date DATETIME NOT NULL,
   end_date DATETIME NOT NULL,
   price_rate_id INT NOT NULL,
@@ -85,6 +86,8 @@ CREATE TABLE bookings (
   FOREIGN KEY (vehicle_plate) REFERENCES vehicles(plate)
     ON UPDATE CASCADE ON DELETE CASCADE,
   FOREIGN KEY (price_rate_id) REFERENCES price_rates(id)
+    ON UPDATE CASCADE ON DELETE CASCADE
+  FOREIGN KEY (charger_id) REFERENCES chargers(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 

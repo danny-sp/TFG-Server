@@ -1,11 +1,8 @@
-from src.Domain.charger_type import ChargerType
-
 class Charger:
-    def __init__(self, id: int, type: ChargerType, busy: bool, active: bool):
+    def __init__(self, id: int, power_kw: float, busy: bool):
         self._id = id
-        self._type = type
+        self._power_kw = power_kw
         self._busy = busy
-        self._active = active
 
     ##############
     # PROPERTIES #
@@ -15,17 +12,9 @@ class Charger:
         return self._id
 
     @property
-    def type(self) -> ChargerType:
-        return self._type
-
-    @property
-    def speed_kw(self) -> float:
-        return self._type.kw_speed
+    def power_kw(self) -> float:
+        return self._power_kw
 
     @property
     def busy(self) -> bool:
         return self._busy
-
-    @property
-    def active(self) -> bool:
-        return self._active

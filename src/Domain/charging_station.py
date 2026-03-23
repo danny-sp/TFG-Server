@@ -35,3 +35,6 @@ class ChargingStation:
     @property
     def chargers(self) -> list[Charger]:
         return self._chargers
+    @chargers.setter
+    def chargers(self, chargers: list[Charger]):
+        self._chargers = chargers

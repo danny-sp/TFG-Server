@@ -3,10 +3,11 @@ import json
 
 from src.Domain.control_route import ControlRoute
 
-from src.Domain.bookingDAO import BookingDAO
-from src.Domain.charging_stationDAO import ChargingStationDAO
-from src.Domain.serviceDAO import ServiceDAO
-from src.Domain.vehicleDAO import VehicleDAO
+import src.Domain.bookingDAO as BookingDAO
+import src.Domain.chargerDAO as chargerDAO
+import src.Domain.charging_stationDAO as charging_stationDAO
+import src.Domain.serviceDAO as ServiceDAO
+import src.Domain.vehicleDAO as VehicleDAO
 
 from src.Domain.option import Option
 from src.Domain.request import Request
@@ -38,43 +39,59 @@ class ControlRequests:
         min_lat, max_lat = min(lats), max(lats)
         min_lon, max_lon = min(lons), max(lons)
 
-        charging_station_dao = ChargingStationDAO()
-        stations_in_area = charging_station_dao.read_stations_in_area(min_lat, max_lat, min_lon, max_lon)
+        stations_in_area = charging_stationDAO.read_stations_in_area(min_lat, max_lat, min_lon, max_lon)
         cls._logger.info(f"Found {len(stations_in_area)} charging stations in the area for request {request.uuid}")
 
-        vehicle_dao = VehicleDAO()
-        vehicle = vehicle_dao.read_by_plate(request.plate)
+        vehicle = VehicleDAO.read_by_plate(request.plate)
+        vehicle.current_percent = request.current_percent
         if not vehicle:
             cls._logger.error(f"Vehicle with plate {request.plate} not found in database. Cannot process request {request.uuid}.")
             return "Vehicle not found. Please register your vehicle before making a request."
 
-        options = []
-
         # Assuming a minimum percent of 20% for the vehicle to be able to reach a charging station
-        max_distance = vehicle.distance_percent(request.current_percent, 20)
+        max_distance = vehicle.distance_percent(20)
 
+        options = []
         for s in stations_in_area:
+            vehicle.current_percent = request.current_percent
+
             _, distance, duration = ControlRoute.get_route_coords(request.position, s.location)
             distance /= 1000
+
+            # FILTERS UNFEASIBLE OPTIONS BASED ON DISTANCE AND VEHICLE CURRENT CHARGE
             if distance > max_distance:
                 continue
 
             start_time = datetime.now() + timedelta(seconds=duration)
-            # TODO: Charging to the 100% ?
-            end_time = start_time + timedelta(seconds=7200)
 
-            o = Option(request.uuid, s, None, None, start_time, end_time)
+            s.chargers = chargerDAO.read_by_station(s)
+            vehicle.current_percent = vehicle.percent_after_distance(distance)
+
+            av_speeds = set()
+            for c in s.chargers:
+                if c.power_kw in av_speeds:
+                    continue
+                av_speeds.add(c.power_kw)
+                # TODO: Charging to the 100% ?
+                chg_hours = vehicle.charging_time(80, c.power_kw)
+
+            o = Option(request_id=request.uuid,
+                       charging_station=s,
+                       price_rate=None,
+                       start_time=start_time,
+                       duration_hours=chg_hours,
+                       kw_speed=c.power_kw)
+
             options.append(o)
         cls._logger.info(f"{len(stations_in_area)} - {len(options)} = {len(stations_in_area) - len(options)} unfeasible stations based on distance and vehicle {request.plate}.")
 
         o_dicts = []
 
-        options.sort(key=lambda x: cls.calculate_delay(request, remaining_duration, x), reverse=True)
+        options.sort(key=lambda x: cls.calculate_delay(request, remaining_duration, x), reverse=False)
         options = options[:10]
 
-        service_dao = ServiceDAO()
         for o in options:
-            o.services_nearby = service_dao.read_near_point(o.charging_station.location, 100)
+            o.services_nearby = ServiceDAO.read_near_point(o.charging_station.location, 100)
             o_dicts.append(o.to_dict())
 
         o_json = json.dumps(o_dicts)
@@ -98,11 +115,11 @@ class ControlRequests:
             return float('inf')
 
         delay = new_duration - remaining_duration
+        option.delay_hours = delay / 3600
 
         return max(delay, 0.0)
 
     @classmethod
     def check_active_bookings(cls, plate: str) -> bool:
-        booking_dao = BookingDAO()
-        active_booking = booking_dao.read_active_by_vehicle_plate(plate)
+        active_booking = BookingDAO.read_active_by_vehicle_plate(plate)
         return active_booking is not None

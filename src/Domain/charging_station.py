@@ -1,40 +1,31 @@
-from src.Domain.service import Service
+"""
+Domain model representing a physical Charging Station location.
+Following Pydantic's BaseModel for data validation and immutability.
+"""
+
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict, Field
+
 from src.Domain.charger import Charger
 
-class ChargingStation:
-    def __init__(self, id: int, name: str, location: tuple[float, float], operator: str, chargers: list[Charger]=[]):
-        self._id = id
-        self._name = name
-        self._location = location
-        self._operator = operator
-        self._chargers = chargers
 
-    ##############
-    # PROPERTIES #
-    ##############
-    @property
-    def id(self) -> int:
-        return self._id
+class ChargingStation(BaseModel):
+    """
+    Domain model representing a physical Charging Station location.
+    """
 
-    @property
-    def name(self) -> str:
-        return self._name
+    model_config = ConfigDict(extra="forbid", arbitrary_types_allowed=True, frozen=True)
 
-    @property
-    def location(self) -> tuple[float, float]:
-        return self._location
-
-    @property
-    def operator(self) -> str:
-        return self._operator
-
-    @property
-    def services(self) -> list[Service]:
-        return self._services
-
-    @property
-    def chargers(self) -> list[Charger]:
-        return self._chargers
-    @chargers.setter
-    def chargers(self, chargers: list[Charger]):
-        self._chargers = chargers
+    id: int = Field(..., gt=0, description="Unique database identifier for the station")
+    name: str = Field(..., min_length=1, description="Commercial name of the station")
+    location: tuple[float, float] = Field(
+        ..., description="GPS coordinates of the station"
+    )
+    operator: str = Field(
+        ..., description="Company responsible for operating the station"
+    )
+    chargers: list[Charger] = Field(
+        default_factory=list,
+        description="Collection of physical chargers available at this location",
+    )

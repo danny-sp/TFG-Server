@@ -1,59 +1,133 @@
-# from src.Domain.vehicleDAO import VehicleDAO
+"""
+DAO for EVUser entity.
+"""
+
+from typing import Optional
 
 from src.Domain.ev_user import EVUser
-
 from src.Persistance.db_broker import DBBroker
+from src.Utils.logger import setup_logger
 
-class EVUserDAO:
-    def __init__(self):
-        self._db = DBBroker()
+_logger = setup_logger("EVUserDAO")
 
-    def insert(self, ev_user: EVUser) -> int:
-        query = """
-        INSERT INTO ev_users (username, email, phone, active_user, registration_date)
-        VALUES (?, ?, ?, ?, ?)
-        """
-        params = (
-            ev_user.username,
-            ev_user.email,
-            ev_user.phone,
-            ev_user.active,
-            ev_user.registration_date
-        )
-        _, inserted_id = self._db.execute_write_query(query, params)
-        return inserted_id
 
-    def update(self, ev_user: EVUser) -> None:
-        query = """
-        UPDATE ev_users
-        SET username = ?, email = ?, phone = ?, active_user = ?, registration_date = ?
-        WHERE id = ?
-        """
-        params = (
-            ev_user.username,
-            ev_user.email,
-            ev_user.phone,
-            ev_user.active,
-            ev_user.registration_date,
-            ev_user.id
-        )
-        return self._db.execute_write_query(query, params)
+def insert(ev_user: EVUser) -> int:
+    """
+    Inserts a new EV user into the database.
 
-    def delete(self, ev_user: EVUser) -> None:
-        query = "DELETE FROM ev_users WHERE id = ?"
-        params = (ev_user.id,)
-        return self._db.execute_write_query(query, params)
+    Args:
+        ev_user (EVUser): The EV user object to insert.
 
-    def read_by_id(self, user_id: int) -> EVUser:
-        rows = self._db.execute_read_query("SELECT * FROM ev_users WHERE id = ?", (user_id,))
-        return self._row_to_ev_user(rows[0]) if rows else None
+    Returns:
+        int: The ID of the newly inserted user, or -1 if the insertion fails.
+    """
+    query = """
+    INSERT INTO ev_users (username, email, phone, active_user, registration_date)
+    VALUES (?, ?, ?, ?, ?)
+    """
+    params = (
+        ev_user.username,
+        ev_user.email,
+        ev_user.phone,
+        ev_user.active,
+        ev_user.registration_date,
+    )
+    db = DBBroker()
+    try:
+        _, inserted_id = db.execute_write_query(query, params)
+    except Exception as e:
+        _logger.error(f"Failed to insert ev_user {ev_user.username}: {e}")
+        return -1
+    return inserted_id
 
-    def _row_to_ev_user(self, row: dict) -> EVUser:
-        return EVUser(
-            user_id=row['id'],
-            username=row['username'],
-            email=row['email'],
-            phone=row['phone'],
-            active=bool(row['active_user']),
-            registration_date=row['registration_date'],
-        )
+
+def update(ev_user: EVUser) -> bool:
+    """
+    Updates an existing EV user in the database.
+
+    Args:
+        ev_user (EVUser): The EV user object with updated values.
+
+    Returns:
+        bool: True if the update was successful, False otherwise.
+    """
+    query = """
+    UPDATE ev_users
+    SET username = ?, email = ?, phone = ?, active_user = ?, registration_date = ?
+    WHERE id = ?
+    """
+    params = (
+        ev_user.username,
+        ev_user.email,
+        ev_user.phone,
+        ev_user.active,
+        ev_user.registration_date,
+        ev_user.id,
+    )
+    db = DBBroker()
+    try:
+        db.execute_write_query(query, params)
+    except Exception as e:
+        _logger.error(f"Failed to update ev_user with ID {ev_user.id}: {e}")
+        return False
+    return True
+
+
+def delete(ev_user: EVUser) -> bool:
+    """
+    Deletes an EV user from the database.
+
+    Args:
+        ev_user (EVUser): The EV user object to delete.
+
+    Returns:
+        bool: True if the deletion was successful and affected rows, False otherwise.
+    """
+    query = "DELETE FROM ev_users WHERE id = ?"
+    params = (ev_user.id,)
+    db = DBBroker()
+    try:
+        n, _ = db.execute_write_query(query, params)
+    except Exception as e:
+        _logger.error(f"Failed to delete ev_user with ID {ev_user.id}: {e}")
+        return False
+    return n > 0
+
+
+def read_by_id(user_id: int) -> Optional[EVUser]:
+    """
+    Reads an EV user from the database by its ID.
+
+    Args:
+        user_id (int): The ID of the EV user to retrieve.
+
+    Returns:
+        Optional[EVUser]: The retrieved EVUser object, or None if not found or an error occurs.
+    """
+    db = DBBroker()
+    try:
+        rows = db.execute_read_query("SELECT * FROM ev_users WHERE id = ?", (user_id,))
+        return _row_to_ev_user(rows[0]) if rows else None
+    except Exception as e:
+        _logger.error(f"Failed to read ev_user with ID {user_id}: {e}")
+        return None
+
+
+def _row_to_ev_user(row: dict) -> EVUser:
+    """
+    Converts a database row into an EVUser object.
+
+    Args:
+        row (dict): A dictionary representing a row from the database.
+
+    Returns:
+        EVUser: The instantiated EVUser object.
+    """
+    return EVUser(
+        user_id=row["id"],
+        username=row["username"],
+        email=row["email"],
+        phone=row["phone"],
+        active=bool(row["active_user"]),
+        registration_date=row["registration_date"],
+    )

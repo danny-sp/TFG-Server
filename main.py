@@ -1,13 +1,15 @@
 from dotenv import load_dotenv
-load_dotenv()
 
-from src.Presentation.mqtt_listener import MqttListener
-from src.Utils.logger import setup_logger
+load_dotenv()
 
 import signal
 import threading
 
+from src.Presentation.mqtt_listener import MqttListener
+from src.Utils.logger import setup_logger
+
 shutdown_event = threading.Event()
+
 
 def main():
     logger = setup_logger("Main")

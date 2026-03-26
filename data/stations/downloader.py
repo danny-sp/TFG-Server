@@ -1,7 +1,8 @@
-from dotenv import load_dotenv
 import json
 import os
+
 import requests
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -15,7 +16,7 @@ if response.status_code == 200:
     data = response.json()
     print(f"{len(data)} Charging Stations were downloaded.")
 
-    with open('stations_data.json', 'w', encoding='utf-8') as f:
+    with open("stations_data.json", "w", encoding="utf-8") as f:
         json.dump(response.json(), f, indent=4, ensure_ascii=False)
 
 else:

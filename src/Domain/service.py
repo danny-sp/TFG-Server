@@ -1,29 +1,35 @@
-from typing import Tuple
+"""
+Domain model representing an amenity or service near a charging station.
+Following Pydantic's BaseModel for data validation and immutability.
+"""
+
+from __future__ import annotations
+
+from pydantic import BaseModel, ConfigDict, Field
 
 from src.Utils.constants import ServiceType
 
-class Service:
-    def __init__(self, id: int, name: str, type: ServiceType, location: Tuple[int, int]):
-        self._id = id
-        self._name = name
-        self._type = type
-        self._location = location
 
-    ##############
-    # PROPERTIES #
-    ##############
-    @property
-    def id(self) -> int:
-        return self._id
+class Service(BaseModel):
+    """
+    Domain model representing an amenity or service near a charging station.
 
-    @property
-    def name(self) -> str:
-        return self._name
+     Attributes:
+        id (int): Unique database identifier for the service.
+        name (str): Commercial or descriptive name of the service.
+        type (ServiceType): The category/type of the service provided.
+        location (tuple[float, float]): GPS coordinates (latitude, longitude) of the service location.
+    """
 
-    @property
-    def type(self) -> ServiceType:
-        return self._type
+    model_config = ConfigDict(extra="forbid", frozen=True)
 
-    @property
-    def location(self) -> Tuple[int, int]:
-        return self._location
+    id: int = Field(..., gt=0, description="Unique database identifier for the service")
+    name: str = Field(
+        ..., min_length=1, description="Commercial or descriptive name of the service"
+    )
+    type: ServiceType = Field(
+        ..., description="The category/type of the service provided"
+    )
+    location: tuple[float, float] = Field(
+        ..., description="GPS coordinates (latitude, longitude)"
+    )

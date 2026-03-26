@@ -2,8 +2,16 @@ from datetime import datetime
 
 from src.Domain.charging_station import ChargingStation
 
+
 class PriceRate:
-    def __init__(self, id: int, charging_station: ChargingStation, start_date: datetime, end_date: datetime, price_per_kwh: float):
+    def __init__(
+        self,
+        id: int,
+        charging_station: ChargingStation,
+        start_date: datetime,
+        end_date: datetime,
+        price_per_kwh: float,
+    ):
         self._id = id
         self._charging_station = charging_station
         self._start_date = start_date

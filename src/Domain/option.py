@@ -1,85 +1,96 @@
+"""
+Domain model representing a potential charging route option.
+Following Pydantic's BaseModel.
+Not frozen for updating some fields, which are not set at creation time.
+"""
+
+from __future__ import annotations
+
 from datetime import datetime, timedelta
+from typing import Any
+
+from pydantic import BaseModel, ConfigDict, Field, computed_field
 
 from src.Domain.charging_station import ChargingStation
 from src.Domain.price_rate import PriceRate
 from src.Domain.service import Service
 
-class Option:
-    def __init__(self, request_id: int, charging_station: ChargingStation, price_rate: PriceRate, start_time: datetime, duration_hours: float, kw_speed: float, delay_hours: float=0.0, services_nearby: list[Service] = []):
-        self._request_id = request_id
-        self._charging_station = charging_station
-        self._start_time = start_time
-        self._end_time = start_time + timedelta(hours=duration_hours)
-        self._duration_hours = duration_hours
-        self._delay_hours = delay_hours
-        # self._price = self._duration_hours * self._price_rate.price_per_kwh
-        self._price = 40.7
-        self._kw_speed = kw_speed
-        self._services_nearby = services_nearby
 
-    def to_dict(self):
-        return {
-            "request_id": self._request_id,
-            "charging_station": {
-                "id": self._charging_station.id,
-                "name": self._charging_station.name,
-                "location": self._charging_station.location,
-                "operator": self._charging_station.operator
-            },
-            "price": float(self._price),
-            "kw_speed": float(self._kw_speed),
-            "start_time": self._start_time.isoformat(),
-            "end_time": self._end_time.isoformat(),
-            "duration_hours": float(self._duration_hours),
-            "delay_hours": float(self._delay_hours),
-            "services_nearby": list(set(service.type for service in self._services_nearby))
-        }
+class Option(BaseModel):
+    """
+    Domain model representing a potential charging route option.
 
-    ##############
-    # PROPERTIES #
-    ##############
-    @property
-    def request_id(self) -> int:
-        return self._request_id
+    Attributes:
+        request_id (str): The UUID of the routing request that generated this option.
+        charging_station (ChargingStation): The proposed station for charging.
+        price_rate (PriceRate | None): The applied price rate for this option, if available.
+        start_time (datetime): The estimated time of arrival at the station.
+        charging_hours (float): The required charging time in hours.
+        kw_speed (float): The charging speed in kilowatts.
+        route_hours (float): The estimated driving duration in hours to reach the station.
+        delay_hours (float): The estimated time lost compared to the direct route.
+        price (float): The estimated total price for this charging option.
+        services_nearby (list[Service]): A list of available services near the station.
+    """
 
-    @property
-    def charging_station(self) -> ChargingStation:
-        return self._charging_station
+    model_config = ConfigDict(
+        extra="forbid",
+        arbitrary_types_allowed=True,
+        frozen=False,
+        validate_assignment=True,
+    )
 
-    @property
-    def price(self) -> float:
-        return self._price
+    request_id: str = Field(..., description="The UUID of the routing request")
+    charging_station: ChargingStation = Field(..., description="The proposed station")
+    price_rate: PriceRate | None = Field(
+        default=None, description="The applied price rate"
+    )
+    start_time: datetime = Field(
+        ..., description="Estimated time of arrival at the station"
+    )
+    charging_hours: float = Field(
+        ..., gt=0.0, description="Required charging time in hours"
+    )
+    kw_speed: float = Field(..., gt=0.0, description="Charging speed in kW")
 
-    @property
-    def kw_speed(self) -> float:
-        return self._kw_speed
+    route_hours: float = Field(
+        default=0.0, ge=0.0, description="Driving duration in hours"
+    )
+    delay_hours: float = Field(
+        default=0.0, ge=0.0, description="Time lost compared to the direct route"
+    )
+    price: float = Field(default=0.0, ge=0.0, description="Estimated total price")
+    services_nearby: list[Service] = Field(
+        default_factory=list, description="List of available services near the station"
+    )
 
-    @property
-    def start_time(self) -> datetime:
-        return self._start_time
-
+    @computed_field  # type: ignore[prop-decorator]
     @property
     def end_time(self) -> datetime:
-        return self._end_time
+        """
+        Dynamically calculates the end time based on the start time and charging duration.
+        """
+        return self.start_time + timedelta(hours=self.charging_hours)
 
-    @property
-    def duration_hours(self) -> float:
-        return self._duration_hours
-
-    @property
-    def delay_hours(self) -> float:
-        return self._delay_hours
-    @delay_hours.setter
-    def delay_hours(self, delay: float):
-        self._delay_hours = delay
-
-    @property
-    def price(self) -> float:
-        return self._price
-
-    @property
-    def services_nearby(self) -> list[Service]:
-        return self._services_nearby
-    @services_nearby.setter
-    def services_nearby(self, services: list[Service]):
-        self._services_nearby = services
+    def to_dict(self) -> dict[str, Any]:
+        """
+        Serializes the Option into a specific dictionary format required by the
+        frontend or API response.
+        """
+        return {
+            "request_id": self.request_id,
+            "charging_station": {
+                "id": self.charging_station.id,  # pylint: disable=no-member
+                "name": self.charging_station.name,  # pylint: disable=no-member
+                "location": self.charging_station.location,  # pylint: disable=no-member
+                "operator": self.charging_station.operator,  # pylint: disable=no-member
+            },
+            "price": float(self.price),
+            "kw_speed": float(self.kw_speed),
+            "start_time": self.start_time.isoformat(),  # pylint: disable=no-member
+            "end_time": self.end_time.isoformat(),
+            "charging_hours": float(self.charging_hours),
+            "route_hours": float(self.route_hours),
+            "delay_hours": float(self.delay_hours),
+            "services_nearby": list({service.type for service in self.services_nearby}),
+        }

@@ -1,51 +1,56 @@
+"""
+Domain model representing an EV Charging Session.
+Following Pydantic's BaseModel.
+Not frozen for updating some fields, which are not set at creation time.
+"""
+
+from __future__ import annotations
+
 from datetime import datetime
+from decimal import Decimal
 
-from src.Domain.charging_sessionDAO import ChargingSessionDAO
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 
-from src.Domain.charger import Charger
 from src.Domain.booking import Booking
+from src.Domain.charger import Charger
 
-class ChargingSession:
-    def __init__(self, id: int, booking: Booking, charger: Charger, start_date: datetime, end_date: datetime = None, energy_delivered_kwh: float = 0.0, total_cost: float = 0.0):
-        self._id = id
-        self._booking = booking
-        self._charger = charger
-        self._start_date = start_date
-        self._end_date = end_date
-        self._energy_delivered_kwh = energy_delivered_kwh
-        self._total_cost = total_cost
 
-    ##############
-    # PROPERTIES #
-    ##############
-    @property
-    def id(self) -> int:
-        return self._id
+class ChargingSession(BaseModel):
+    """
+    Domain model representing an EV Charging Session.
 
-    @property
-    def booking(self) -> Booking:
-        return self._booking
+    Attributes:
+        id (int | None): Unique identifier for the charging session, assigned by the database.
+        booking (Booking): The associated booking for this charging session.
+        charger (Charger): The physical charger used for this session.
+        start_date (datetime): The timestamp when the charging session started.
+        end_date (datetime | None): The timestamp when the charging session ended. Can be None if the session is still active.
+        energy_delivered_kwh (float): The total energy delivered during the session in kilowatt-hours.
+        total_cost (Decimal): The total cost of the charging session, calculated based on the energy delivered and the price rate.
+    """
 
-    @property
-    def charger(self) -> Charger:
-        return self._charger
+    model_config = ConfigDict(
+        extra="forbid",
+        arbitrary_types_allowed=True,
+        frozen=False,
+        validate_assignment=True,
+    )
 
-    @property
-    def start_date(self) -> datetime:
-        return self._start_date
+    id: int | None = Field(default=None, gt=0, description="Unique identifier")
+    booking: Booking = Field(..., description="The associated booking")
+    charger: Charger = Field(..., description="The physical charger used")
+    start_date: datetime = Field(..., description="Session start timestamp")
+    end_date: datetime | None = Field(default=None, description="Session end timestamp")
+    energy_delivered_kwh: float = Field(
+        default=0.0, ge=0.0, description="Energy in kWh"
+    )
+    total_cost: Decimal = Field(
+        default=Decimal("0.0"), ge=Decimal("0.0"), description="Total cost"
+    )
 
-    @property
-    def end_date(self) -> datetime:
-        return self._end_date
-
-    @end_date.setter
-    def end_date(self, end_date: datetime):
-        self._end_date = end_date
-
-    @property
-    def energy_delivered_kwh(self) -> float:
-        return self._energy_delivered_kwh
-
-    @property
-    def total_cost(self) -> float:
-        return self._total_cost
+    @model_validator(mode="after")
+    def validate_business_rules(self) -> ChargingSession:
+        """Validates that the end date is not before the start date."""
+        if self.end_date is not None and self.end_date < self.start_date:
+            raise ValueError("End date cannot be strictly before the start date.")
+        return self

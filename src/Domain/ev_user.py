@@ -1,47 +1,39 @@
+"""
+Domain model representing an Electric Vehicle (EV) system user.
+"""
+
+from __future__ import annotations
+
 from datetime import datetime
+
+from pydantic import BaseModel, ConfigDict, Field
 
 from src.Domain.vehicle import Vehicle
 
-class EVUser:
-    def __init__(self, id: int, username: str, email: str, phone: str = None, active: bool = True, registration_date: datetime = None, vehicles: list[Vehicle] = []):
-        self._id = id
-        self._username = username
-        self._email = email
-        self._phone = phone
-        self._active = active
-        self._registration_date = registration_date if registration_date else datetime.now()
-        self._vehicles = vehicles
 
-        if len(vehicles) == 0:
-            self._vehicles = self._load_vehicles()
+class EVUser(BaseModel):
+    """
+    Domain model representing an Electric Vehicle (EV) system user.
 
-    ##############
-    # PROPERTIES #
-    ##############
-    @property
-    def id(self) -> int:
-        return self._user_id
+    This class is immutable (frozen) as the user data is pre-populated in the
+    database. It acts as a container for user metadata and their associated
+    collection of vehicles.
+    """
 
-    @property
-    def username(self) -> str:
-        return self._username
+    model_config = ConfigDict(extra="forbid", arbitrary_types_allowed=True, frozen=True)
 
-    @property
-    def email(self) -> str:
-        return self._email
-
-    @property
-    def phone(self) -> str:
-        return self._phone
-
-    @property
-    def active(self) -> bool:
-        return self._active
-
-    @property
-    def registration_date(self) -> datetime:
-        return self._registration_date
-
-    @property
-    def vehicles(self) -> list[Vehicle]:
-        return self._vehicles
+    id: int = Field(..., gt=0, description="Unique database identifier for the user")
+    username: str = Field(..., min_length=1, description="Unique login name")
+    email: str = Field(..., description="Primary contact email address")
+    phone: str | None = Field(default=None, description="Optional contact phone number")
+    active: bool = Field(
+        default=True, description="Indicates if the account is currently active"
+    )
+    registration_date: datetime = Field(
+        default_factory=datetime.now,
+        description="Date and time when the user registered",
+    )
+    vehicles: list[Vehicle] = Field(
+        default_factory=list,
+        description="List of vehicles owned or managed by this user",
+    )

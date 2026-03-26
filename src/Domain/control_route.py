@@ -1,86 +1,140 @@
-from typing import Tuple, List
-from geopy.distance import geodesic
+"""
+Route calculation utilities for the system.
+"""
 
-from src.Persistance.route_client import RouteClient
+from typing import List, Tuple
 
+from geopy.distance import geodesic  # type: ignore
+
+import src.Persistance.route_client as RouteClient
 from src.Utils.logger import setup_logger
 
-class ControlRoute:
+_logger = setup_logger("ControlRoute")
 
-    _logger = setup_logger("ControlRoute")
 
-    @classmethod
-    def get_route_str(cls, coords: Tuple[float, float], destination: str):
-        start_coords = coords
+def get_route_str(
+    coords: Tuple[float, float], destination: str
+) -> Tuple[List[Tuple[float, float]], float, float] | None:
+    """
+    Gets the route geometry, distance, and duration between a starting coordinate and a predefined destination.
+    Args:
+        coords (Tuple[float, float]): A tuple of (latitude, longitude) for the starting point.
+        destination (str): A string representing the destination, either "BILBAO" or "MADRID".
 
-        if destination == "BILBAO":
-            end_coords = (43.262873, -2.947564)
-        elif destination == "MADRID":
-            end_coords = (40.451843, -3.686502)
-        else:
-            cls._logger.warning(f"Unknown destination '{destination}' requested")
-            return None
+    Returns:
+        Tuple[List[Tuple[float, float]], float, float]: A tuple containing the route geometry as a list of coordinates, the distance in kilometers, and the duration in seconds.
+    """
 
-        cls._logger.debug(f"Fetching route from {start_coords} to {end_coords} for destination '{destination}'")
-        response = RouteClient.get_route_geometry(start_coords, end_coords)
+    start_coords = coords
 
-        if response is None:
-            cls._logger.warning(f"No route found for destination '{destination}'")
-            return None
+    if destination == "BILBAO":
+        end_coords = (43.262873, -2.947564)
+    elif destination == "MADRID":
+        end_coords = (40.451843, -3.686502)
+    else:
+        _logger.warning(f"Unknown destination '{destination}' requested")
+        return None
 
-        return response
+    _logger.debug(
+        f"Fetching route from {start_coords} to {end_coords} for destination '{destination}'"
+    )
+    response = RouteClient.get_route_geometry(start_coords, end_coords)
 
-    @classmethod
-    def get_route_coords(cls, coords: Tuple[float, float], destination: Tuple[float, float]):
-        start_coords = coords
-        end_coords = destination
+    if response is None:
+        _logger.warning(f"No route found for destination '{destination}'")
+        return None
 
-        # cls._logger.debug(f"Fetching route from {start_coords} to {end_coords} for custom coordinates")
-        response = RouteClient.get_route_geometry(start_coords, end_coords)
+    return response
 
-        if response is None:
-            cls._logger.warning(f"No route found for custom coordinates {destination}")
-            return None
 
-        return response
+def get_route_coords(
+    coords: Tuple[float, float], destination: Tuple[float, float]
+) -> Tuple[List[Tuple[float, float]], float, float] | None:
+    """
+    Gets the route geometry, distance, and duration between two coordinates.
 
-    @classmethod
-    def get_distance_coords(cls, coords: Tuple[float, float], destination: Tuple[float, float]) -> float:
-        start_coords = coords
-        end_coords = destination
+    Args:
+        coords (Tuple[float, float]): A tuple of (latitude, longitude) for the starting point.
+        destination (Tuple[float, float]): A tuple of (latitude, longitude) for the destination point.
 
-        cls._logger.debug(f"Fetching distance from {start_coords} to {end_coords} for custom coordinates")
-        response = RouteClient.get_route_geometry(start_coords, end_coords)
+    Returns:
+        Tuple[List[Tuple[float, float]], float, float]: A tuple containing the route geometry as a list of coordinates, the distance in kilometers, and the duration in seconds.
+    """
 
-        if response is None:
-            cls._logger.warning(f"No route found for custom coordinates {destination}")
-            distance = geodesic(start_coords, end_coords).kilometers
-        else:
-            _, distance, _ = response
-            distance /= 1000
+    start_coords = coords
+    end_coords = destination
 
-        return distance
+    # cls._logger.debug(f"Fetching route from {start_coords} to {end_coords} for custom coordinates")
+    response = RouteClient.get_route_geometry(start_coords, end_coords)
 
-    @classmethod
-    def get_duration_list(cls, coords: List[Tuple[float, float]]) -> float:
-        if len(coords) < 2:
-            cls._logger.warning("At least two coordinates are required to calculate duration")
-            return None
+    if response is None:
+        _logger.warning(f"No route found for custom coordinates {destination}")
+        return None
 
-        url = "http://localhost:5000/route/v1/driving/"
+    return response
 
-        for c in coords:
-            url += f"{c[1]},{c[0]};"
 
-        url = url[:-1]  # Remove semicolon
-        url += "?overview=full"
+def get_distance_coords(
+    coords: Tuple[float, float], destination: Tuple[float, float]
+) -> float:
+    """
+    Gets the distance in kilometers between two coordinates.
 
-        response = RouteClient.get_route_geometry_list(url)
+    Args:
+        coords (Tuple[float, float]): A tuple of (latitude, longitude) for the starting point.
+        destination (Tuple[float, float]): A tuple of (latitude, longitude) for the destination point.
 
-        if response is None:
-            cls._logger.warning("No route found for given coordinates")
-            return None
+    Returns:
+        float: The distance between the two points in kilometers.
+    """
 
-        _, _, duration = response
+    start_coords = coords
+    end_coords = destination
 
-        return duration
+    _logger.debug(
+        f"Fetching distance from {start_coords} to {end_coords} for custom coordinates"
+    )
+    response = RouteClient.get_route_geometry(start_coords, end_coords)
+
+    if response is None:
+        _logger.warning(f"No route found for custom coordinates {destination}")
+        distance = geodesic(start_coords, end_coords).kilometers
+    else:
+        _, distance, _ = response
+        distance /= 1000
+
+    return distance
+
+
+def get_duration_list(coords: List[Tuple[float, float]]) -> float:
+    """
+    Gets the total duration of a route defined by a list of coordinates.
+
+    Args:
+        coords (List[Tuple[float, float]]): A list of (latitude, longitude) tuples representing the route waypoints.
+
+    Returns:
+            float: The total duration of the route in seconds.
+    """
+
+    if len(coords) < 2:
+        _logger.warning("At least two coordinates are required to calculate duration")
+        raise ValueError("At least two coordinates are required to calculate duration")
+
+    url = "http://localhost:5000/route/v1/driving/"
+
+    for c in coords:
+        url += f"{c[1]},{c[0]};"
+
+    url = url[:-1]  # Remove semicolon
+    url += "?overview=full"
+
+    response = RouteClient.get_route_geometry_list(url)
+
+    if response is None:
+        _logger.warning("No route found for given coordinates")
+        raise Exception("No route found for given coordinates")
+
+    _, _, duration = response
+
+    return duration

@@ -128,7 +128,6 @@ class ControlRequests:
                 o = Option(
                     request_id=request.uuid,
                     charging_station=s,
-                    price_rate=None,
                     start_time=start_time,
                     charging_hours=chg_hours,
                     route_hours=duration / 3600,
@@ -142,19 +141,19 @@ class ControlRequests:
             f"{len(stations_in_area)} - {len(options)} = {len(stations_in_area) - len(options)} unfeasible stations based on distance and vehicle {request.plate}."
         )
 
-        o_dicts = []
-
         options.sort(
             key=lambda x: x.delay_hours,
             reverse=False,
         )
         options = options[:10]
 
+        o_dicts = []
         for o in options:
             o.services_nearby = ServiceDAO.read_near_point(
                 o.charging_station.location, 100
             )
             o_dicts.append(o.to_dict())
+            cls._logger.debug(o.debug_str())
 
         o_json = json.dumps(o_dicts)
         cls._logger.info(f"Generated {len(options)} options for request {request.uuid}")

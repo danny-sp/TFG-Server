@@ -23,7 +23,7 @@ def insert(booking: Booking) -> int:
         int: The ID of the newly inserted booking, or -1 if insertion fails.
     """
     query = """
-    INSERT INTO bookings (vehicle_plate, booking_date, start_date, end_date, price_rate_id, status, price)
+    INSERT INTO bookings (vehicle_plate, booking_date, start_date, end_date, status, price)
     VALUES (?, ?, ?, ?, ?, ?, ?)
     """
     params = (
@@ -31,7 +31,6 @@ def insert(booking: Booking) -> int:
         booking.booking_date,
         booking.start_date,
         booking.end_date,
-        booking.price_rate.id,
         booking.status.value,
         booking.price,
     )
@@ -58,7 +57,7 @@ def update(booking: Booking) -> bool:
     """
     query = """
     UPDATE bookings
-    SET vehicle_plate = ?, booking_date = ?, start_date = ?, end_date = ?, price_rate_id = ?, status = ?, price = ?
+    SET vehicle_plate = ?, booking_date = ?, start_date = ?, end_date = ?, status = ?, price = ?
     WHERE id = ?
     """
     params = (
@@ -66,7 +65,6 @@ def update(booking: Booking) -> bool:
         booking.booking_date,
         booking.start_date,
         booking.end_date,
-        booking.price_rate.id,
         booking.status.value,
         booking.price,
         booking.id,
@@ -164,7 +162,6 @@ def _row_to_booking(row: dict) -> Booking:
         booking_date=row["booking_date"],
         start_date=row["start_date"],
         end_date=row["end_date"],
-        price_rate=price_rate,
         status=BookingStatus(row["status"]),
         price=row["price"],
     )

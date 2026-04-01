@@ -11,8 +11,8 @@ from typing import Any
 
 from pydantic import BaseModel, ConfigDict, Field, computed_field
 
+import src.Domain.control_price as ControlPrice
 from src.Domain.charging_station import ChargingStation
-from src.Domain.price_rate import PriceRate
 from src.Domain.service import Service
 
 
@@ -23,7 +23,6 @@ class Option(BaseModel):
     Attributes:
         request_id (str): The UUID of the routing request that generated this option.
         charging_station (ChargingStation): The proposed station for charging.
-        price_rate (PriceRate | None): The applied price rate for this option, if available.
         start_time (datetime): The estimated time of arrival at the station.
         charging_hours (float): The required charging time in hours.
         kw_speed (float): The charging speed in kilowatts.
@@ -42,9 +41,6 @@ class Option(BaseModel):
 
     request_id: str = Field(..., description="The UUID of the routing request")
     charging_station: ChargingStation = Field(..., description="The proposed station")
-    price_rate: PriceRate | None = Field(
-        default=None, description="The applied price rate"
-    )
     start_time: datetime = Field(
         ..., description="Estimated time of arrival at the station"
     )
@@ -59,7 +55,6 @@ class Option(BaseModel):
     delay_hours: float = Field(
         default=0.0, ge=0.0, description="Time lost compared to the direct route"
     )
-    price: float = Field(default=0.0, ge=0.0, description="Estimated total price")
     services_nearby: list[Service] = Field(
         default_factory=list, description="List of available services near the station"
     )
@@ -72,6 +67,52 @@ class Option(BaseModel):
         """
         return self.start_time + timedelta(hours=self.charging_hours)
 
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def price(self) -> float:
+        """
+        Dynamically calculates the total price based on the charging hours and electricity prices.
+        """
+        start_hour = self.start_time.replace(minute=0, second=0, microsecond=0)
+        end_hour = self.end_time.replace(minute=59, second=0, microsecond=0)
+
+        pvpc_prices = ControlPrice.get_price(start_hour, end_hour)
+        prices = ControlPrice.total_price(self.kw_speed, pvpc_prices)
+
+        total_cost = 0.0
+        current_time = self.start_time
+
+        for price_per_kwh in prices:
+            next_hour = current_time.replace(
+                minute=0, second=0, microsecond=0
+            ) + timedelta(hours=1)
+            end_of_segment = min(self.end_time, next_hour)
+
+            hours_in_segment = (end_of_segment - current_time).total_seconds() / 3600.0
+
+            total_cost += price_per_kwh * self.kw_speed * hours_in_segment
+
+            current_time = end_of_segment
+            if current_time >= self.end_time:
+                break
+
+        return round(total_cost, 2)
+
+    def debug_str(self) -> str:
+        """
+        Provides a detailed string representation of the Option for debugging purposes.
+        """
+        return (
+            f"Option(request_id={self.request_id}, "
+            f"charging_station={self.charging_station.name}, "
+            f"start_time={self.start_time.isoformat()}, "
+            f"charging_hours={self.charging_hours}, "
+            f"kw_speed={self.kw_speed}, "
+            f"route_hours={self.route_hours}, "
+            f"delay_hours={self.delay_hours}, "
+            f"price={self.price}, "
+            f"services_nearby={[service.type for service in self.services_nearby]})"
+        )
     def to_dict(self) -> dict[str, Any]:
         """
         Serializes the Option into a specific dictionary format required by the

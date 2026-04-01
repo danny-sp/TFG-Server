@@ -8,10 +8,8 @@ from __future__ import annotations
 from datetime import datetime
 from decimal import Decimal
 
-from pydantic import (BaseModel, ConfigDict, Field, computed_field,
-                      model_validator)
+from pydantic import BaseModel, ConfigDict, Field, computed_field, model_validator
 
-from src.Domain.price_rate import PriceRate
 from src.Domain.vehicle import Vehicle
 from src.Utils.constants import BookingStatus
 
@@ -21,7 +19,6 @@ class Booking(BaseModel):
     Domain model representing a Charging Station Booking.
     """
 
-    # Enforces immutability and permits custom classes like Vehicle and PriceRate
     model_config = ConfigDict(extra="forbid", arbitrary_types_allowed=True, frozen=True)
 
     id: int | None = Field(
@@ -38,9 +35,6 @@ class Booking(BaseModel):
     )
     end_date: datetime = Field(
         ..., description="The scheduled end date and time for charging"
-    )
-    price_rate: PriceRate = Field(
-        ..., description="The applied price rate for this booking"
     )
     price: Decimal = Field(
         ..., description="The total calculated price for the booking"
@@ -100,7 +94,6 @@ class Booking(BaseModel):
         vehicle: Vehicle,
         start_date: datetime,
         end_date: datetime,
-        price_rate: PriceRate,
         price: Decimal | float | str,
     ) -> Booking:
         """
@@ -113,7 +106,6 @@ class Booking(BaseModel):
             vehicle (Vehicle): The vehicle making the booking.
             start_date (datetime): The desired start time.
             end_date (datetime): The desired end time.
-            price_rate (PriceRate): The rate applied.
             price (Decimal | float | str): The calculated price (will be cast to Decimal).
 
         Returns:
@@ -133,7 +125,6 @@ class Booking(BaseModel):
             booking_date=now,
             start_date=start_date,
             end_date=end_date,
-            price_rate=price_rate,
             price=price,
             status=BookingStatus.SCHEDULED,
         )

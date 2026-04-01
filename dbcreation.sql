@@ -65,14 +65,6 @@ CREATE TABLE chargers (
     ON UPDATE CASCADE ON DELETE CASCADE
 );
 
-CREATE TABLE price_rates (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  operator_id INT NOT NULL,
-  extra_per_kwh DECIMAL(6,2) NOT NULL,
-  FOREIGN KEY (operator_id) REFERENCES operators(id)
-    ON UPDATE CASCADE ON DELETE CASCADE
-);
-
 CREATE TABLE bookings (
   id INT AUTO_INCREMENT PRIMARY KEY,
   vehicle_plate VARCHAR(15) NOT NULL,
@@ -80,13 +72,10 @@ CREATE TABLE bookings (
   charger_id INT NOT NULL,
   start_date DATETIME NOT NULL,
   end_date DATETIME NOT NULL,
-  price_rate_id INT NOT NULL,
   price DECIMAL(8,2) NOT NULL,
   status ENUM('scheduled', 'completed', 'cancelled') DEFAULT 'scheduled',
   FOREIGN KEY (vehicle_plate) REFERENCES vehicles(plate)
     ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (price_rate_id) REFERENCES price_rates(id)
-    ON UPDATE CASCADE ON DELETE CASCADE
   FOREIGN KEY (charger_id) REFERENCES chargers(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );

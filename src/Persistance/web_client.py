@@ -1,5 +1,5 @@
 """
-Module containing methods for interacting with an OSRM HTTP server to retrieve route geometry, distance, and duration.
+Module containing methods for interacting with any HTTP server to retrieve information.
 """
 
 import polyline
@@ -7,7 +7,7 @@ import requests
 
 from src.Utils.logger import setup_logger
 
-_logger = setup_logger("RouteClient")
+_logger = setup_logger("WebClient")
 
 
 def get_route_geometry(
@@ -45,33 +45,22 @@ def get_route_geometry(
         return None
 
 
-def get_route_geometry_list(
-    url: str,
-) -> tuple[list[tuple[float, float]], float, float] | None:
+def get_http(url: str, params: dict | None = None) -> dict | None:
     """
-    Executes a GET request to the specified URL to retrieve route geometry, distance, and duration.
+    Executes a GET request to the specified URL to retrieve a JSON response.
 
     Args:
         url (str): The URL to send the GET request to.
-
+        params (dict | None): The query parameters for the GET request.
     Returns:
-        geometry (list of tuples): A list of (latitude, longitude) tuples representing the route geometry.
-        distance (float): The total distance of the route in meters.
-        duration (float): The total duration of the route in seconds.
+        dict: A dictionary containing the information retrieved from the HTTP server.
     """
 
     try:
-        response = requests.get(url, timeout=5)
+        response = requests.get(url, params=params, timeout=5)
         data = response.json()
 
-        if data["code"] != "Ok":
-            _logger.error(f"Error with OSRM: {data['code']}")
-            return None
-
-        encoded_geometry = data["routes"][0]["geometry"]
-        distance = data["routes"][0]["distance"]
-        duration = data["routes"][0]["duration"]
-        return polyline.decode(encoded_geometry), distance, duration
+        return data
 
     except requests.RequestException as e:
         _logger.error(f"Connection error: {e}")

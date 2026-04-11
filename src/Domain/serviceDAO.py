@@ -129,7 +129,7 @@ def read_near_point(
             ST_Y(s.location) as latitude,
             ST_X(s.location) as longitude
     FROM services s
-    WHERE ST_Distance(ST_GeomFromText(?), s.location) < ?
+    WHERE ST_Distance_Sphere(ST_GeomFromText(?), s.location) < ?
     """
 
     params = (station_location, max_distance)

@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from geopy.distance import geodesic  # type: ignore
 
-import src.Persistance.route_client as RouteClient
+import src.Persistance.web_client as RouteClient
 from src.Utils.logger import setup_logger
 
 _logger = setup_logger("ControlRoute")
@@ -129,12 +129,12 @@ def get_duration_list(coords: List[Tuple[float, float]]) -> float:
     url = url[:-1]  # Remove semicolon
     url += "?overview=full"
 
-    response = RouteClient.get_route_geometry_list(url)
+    response = RouteClient.get_http(url)
 
     if response is None:
         _logger.warning("No route found for given coordinates")
         raise Exception("No route found for given coordinates")
 
-    _, _, duration = response
+    duration = response["routes"][0]["duration"]
 
     return duration

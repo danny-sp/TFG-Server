@@ -26,7 +26,7 @@ class ChargingSession(BaseModel):
         start_date (datetime): The timestamp when the charging session started.
         end_date (datetime | None): The timestamp when the charging session ended. Can be None if the session is still active.
         energy_delivered_kwh (float): The total energy delivered during the session in kilowatt-hours.
-        total_cost (Decimal): The total cost of the charging session, calculated based on the energy delivered and the price rate.
+        total_cost (Decimal): The total cost of the charging session, calculated based on the energy delivered and the price.
     """
 
     model_config = ConfigDict(

@@ -112,6 +112,30 @@ def read_by_id(user_id: int) -> Optional[EVUser]:
         _logger.error(f"Failed to read ev_user with ID {user_id}: {e}")
         return None
 
+def read_by_plate(plate: str) -> Optional[EVUser]:
+    """
+    Reads an EV user from the database by the license plate of their vehicle.
+
+    Args:
+        plate (str): The license plate of the vehicle associated with the EV user.
+
+    Returns:
+        Optional[EVUser]: The retrieved EVUser object, or None if not found or an error occurs.
+    """
+    db = DBBroker()
+    try:
+        rows = db.execute_read_query(
+            """
+            SELECT ev_users.*
+            FROM ev_users, vehicles
+            WHERE vehicles.plate = ? AND ev_users.id = vehicles.user_id
+            """,
+            (plate,),
+        )
+        return _row_to_ev_user(rows[0]) if rows else None
+    except Exception as e:
+        _logger.error(f"Failed to read ev_user with vehicle plate {plate}: {e}")
+        return None
 
 def _row_to_ev_user(row: dict) -> EVUser:
     """
@@ -130,4 +154,5 @@ def _row_to_ev_user(row: dict) -> EVUser:
         phone=row["phone"],
         active=bool(row["active_user"]),
         registration_date=row["registration_date"],
+        time_price=row["time_price"]
     )

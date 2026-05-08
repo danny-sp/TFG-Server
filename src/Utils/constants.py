@@ -17,13 +17,3 @@ class ServiceType(StrEnum):
     SUPERMARKET = "supermarket"
     ATM = "atm"
     PHARMACY = "pharmacy"
-
-
-class BookingStatus(StrEnum):
-    """
-    Enumeration of different booking statuses for a charging station reservation.
-    """
-
-    SCHEDULED = "scheduled"
-    CANCELLED = "cancelled"
-    COMPLETED = "completed"

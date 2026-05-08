@@ -40,6 +40,9 @@ class Request(BaseModel):
     destination: tuple[float, float] = Field(
         ..., description="Destination GPS coordinates (lat, lon)"
     )
+    price_hour: float = Field(
+        default=15.0, gt=0.0, description="Price per hour for the driver"
+    )
 
     def to_dict(self) -> dict[str, Any]:
         """
@@ -80,4 +83,5 @@ class Request(BaseModel):
             current_percent=data["current_percent"],
             position=(data["latitude"], data["longitude"]),
             destination=(data["destination_lat"], data["destination_lon"]),
+            price_hour=data.get("price_hour", 15), # Default price per hour if not provided
         )

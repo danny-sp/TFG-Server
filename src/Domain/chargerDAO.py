@@ -156,47 +156,6 @@ def read_by_station_id(station_id: int) -> list[Charger]:
         return []
 
 
-def read_available_by_station(
-    charging_station: ChargingStation, start_time: datetime, end_time: datetime
-) -> list[Charger]:
-    """
-    Reads all accessible and available chargers for a given station within a time range.
-
-    Args:
-        charging_station (ChargingStation): The charging station.
-        start_time (datetime): The start of the time range.
-        end_time (datetime): The end of the time range.
-
-    Returns:
-        list[Charger]: A list of available chargers.
-    """
-    db = DBBroker()
-
-    query = """
-        SELECT c.* FROM chargers c
-        WHERE c.charging_station_id = ?
-          AND c.charger_busy = 0
-          AND NOT EXISTS (
-              SELECT 1 
-              FROM bookings b 
-              WHERE b.charger_id = c.id
-                AND b.status != 'cancelled'
-                AND b.start_date < ?
-                AND b.end_date > ?
-          )
-    """
-
-    params = (charging_station.id, end_time, start_time)
-    try:
-        rows = db.execute_read_query(query, params)
-        return [_row_to_charger(row) for row in rows] if rows else []
-    except Exception as e:
-        _logger.error(
-            f"Failed to read available chargers for station {charging_station.id} between {start_time} and {end_time}: {e}"
-        )
-        return []
-
-
 def _row_to_charger(row: dict) -> Charger:
     """
     Converts a database row into a Charger object.

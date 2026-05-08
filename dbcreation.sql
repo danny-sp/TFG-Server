@@ -64,32 +64,3 @@ CREATE TABLE chargers (
   FOREIGN KEY (charging_station_id) REFERENCES charging_stations(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );
-
-CREATE TABLE bookings (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  vehicle_plate VARCHAR(15) NOT NULL,
-  booking_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  charger_id INT NOT NULL,
-  start_date DATETIME NOT NULL,
-  end_date DATETIME NOT NULL,
-  price DECIMAL(8,2) NOT NULL,
-  status ENUM('scheduled', 'completed', 'cancelled') DEFAULT 'scheduled',
-  FOREIGN KEY (vehicle_plate) REFERENCES vehicles(plate)
-    ON UPDATE CASCADE ON DELETE CASCADE,
-  FOREIGN KEY (charger_id) REFERENCES chargers(id)
-    ON UPDATE CASCADE ON DELETE CASCADE
-);
-
-CREATE TABLE charging_sessions (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  booking_id INT,
-  charger_id INT NOT NULL,
-  start_date DATETIME NOT NULL,
-  end_date DATETIME,
-  energy_delivered_kwh DECIMAL(6,2),
-  total_cost DECIMAL(8,2),
-  FOREIGN KEY (booking_id) REFERENCES bookings(id)
-    ON UPDATE CASCADE ON DELETE SET NULL,
-  FOREIGN KEY (charger_id) REFERENCES chargers(id)
-    ON UPDATE CASCADE ON DELETE CASCADE
-);

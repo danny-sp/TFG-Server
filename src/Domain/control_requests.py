@@ -5,7 +5,6 @@ Processes routing requests from EV users.
 import json
 from datetime import datetime, timedelta
 
-import src.Domain.bookingDAO as BookingDAO
 import src.Domain.charging_stationDAO as charging_stationDAO
 import src.Domain.control_route as ControlRoute
 import src.Domain.serviceDAO as ServiceDAO
@@ -29,12 +28,11 @@ class ControlRequests:
         """
         Processes a routing request from an EV user:
             1. Validates the request and checks for duplicates.
-            2. Checks if the vehicle has any active bookings.
-            3. Calculates the remaining route and duration to the destination.
-            4. Retrieves charging stations in the area of the remaining route.
-            5. Filters stations based on the vehicle's current charge and distance.
-            6. For each feasible station, calculates the total delay compared to the original route.
-            7. Generates a list of charging options and returns them as a JSON string.
+            2. Calculates the remaining route and duration to the destination.
+            3. Retrieves charging stations in the area of the remaining route.
+            4. Filters stations based on the vehicle's current charge and distance.
+            5. For each feasible station, calculates the total delay compared to the original route.
+            6. Generates a list of charging options and returns them as a JSON string.
 
         Args:
             request_data (dict): A dictionary containing the routing request data.
@@ -53,12 +51,6 @@ class ControlRequests:
         cls._logger.info(
             f"Received new request: {request.uuid} for plate {request.plate} to destination {request.destination}"
         )
-
-        if cls.check_active_bookings(request.plate):
-            cls._logger.warning(
-                f"Vehicle with plate {request.plate} already has an active booking. Cannot process request {request.uuid}."
-            )
-            return "Vehicle already has an active booking. Please complete or cancel the existing booking before making a new request."
 
         remaining_route, _, remaining_duration = ControlRoute.get_route_coords(
             request.position, request.destination
@@ -129,11 +121,13 @@ class ControlRequests:
                     request_id=request.uuid,
                     charging_station=s,
                     start_time=start_time,
+                    price_hour=request.price_hour,
                     charging_hours=chg_hours,
+                    detour_hours=routing_delay_hours,
+                    delay_hours=routing_delay_hours + chg_hours,
                     route_hours=duration / 3600,
                     kw_speed=c.power_kw,
                 )
-                o.delay_hours = routing_delay_hours + chg_hours
 
                 options.append(o)
 
@@ -142,8 +136,8 @@ class ControlRequests:
         )
 
         options.sort(
-            key=lambda x: x.delay_hours,
-            reverse=False,
+            key=lambda x: x.utility,
+            reverse=True,
         )
         options = options[:10]
 
@@ -185,18 +179,3 @@ class ControlRequests:
         )
 
         return stations_in_area
-
-    @classmethod
-    def check_active_bookings(cls, plate: str) -> bool:
-        """
-        Checks if the vehicle with the given plate has any active bookings.
-
-        Args:
-            plate (str): The license plate of the vehicle.
-
-        Returns:
-            bool: True if there is an active booking for the vehicle, False otherwise.
-        """
-
-        active_booking = BookingDAO.read_active_by_vehicle_plate(plate)
-        return active_booking is not None

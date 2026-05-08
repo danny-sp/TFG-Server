@@ -44,11 +44,16 @@ class Option(BaseModel):
     start_time: datetime = Field(
         ..., description="Estimated time of arrival at the station"
     )
+    kw_speed: float = Field(..., gt=0.0, description="Charging speed in kW")
+    price_hour: float = Field(
+        default=15.0, gt=0.0, description="Price per hour for the driver"
+    )
     charging_hours: float = Field(
         ..., gt=0.0, description="Required charging time in hours"
     )
-    kw_speed: float = Field(..., gt=0.0, description="Charging speed in kW")
-
+    detour_hours: float = Field(
+        default=0.0, ge=0.0, description="Time lost compared to the direct route"
+    )
     route_hours: float = Field(
         default=0.0, ge=0.0, description="Driving duration in hours"
     )
@@ -97,6 +102,16 @@ class Option(BaseModel):
                 break
 
         return round(total_cost, 2)
+
+    @computed_field  # type: ignore[prop-decorator]
+    @property
+    def utility(self) -> float:
+        """
+        Dynamically calculates the utility of the option based on its price, and delay. Represents an aggregated "cost".
+        Negative to maximize utility (minimize cost).
+        """
+        return -((self.charging_hours + self.detour_hours)*self.price_hour + self.price)
+
 
     def debug_str(self) -> str:
         """

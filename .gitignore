@@ -1,6 +1,7 @@
 # data
 *.osm.pbf
 stations_data.json
+logs/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

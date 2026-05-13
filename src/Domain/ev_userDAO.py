@@ -148,11 +148,11 @@ def _row_to_ev_user(row: dict) -> EVUser:
         EVUser: The instantiated EVUser object.
     """
     return EVUser(
-        user_id=row["id"],
+        id=row["id"],
         username=row["username"],
         email=row["email"],
         phone=row["phone"],
         active=bool(row["active_user"]),
         registration_date=row["registration_date"],
-        time_price=row["time_price"]
+        value_time=row["value_of_time"]
     )

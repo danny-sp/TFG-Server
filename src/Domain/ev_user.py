@@ -26,6 +26,11 @@ class EVUser(BaseModel):
     username: str = Field(..., min_length=1, description="Unique login name")
     email: str = Field(..., description="Primary contact email address")
     phone: str | None = Field(default=None, description="Optional contact phone number")
+    value_time: float = Field(
+        default=15.0,
+        gt=0,
+        description="User's subjective value of time in €/hour, used for route optimization",
+    )
     active: bool = Field(
         default=True, description="Indicates if the account is currently active"
     )

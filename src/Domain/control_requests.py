@@ -9,6 +9,7 @@ import src.Domain.charging_stationDAO as charging_stationDAO
 import src.Domain.control_route as ControlRoute
 import src.Domain.serviceDAO as ServiceDAO
 import src.Domain.vehicleDAO as VehicleDAO
+import src.Domain.ev_userDAO as Ev_userDAO
 from src.Domain.option import Option
 from src.Domain.request import Request
 from src.Utils.logger import setup_logger
@@ -56,14 +57,16 @@ class ControlRequests:
             request.position, request.destination
         )
 
-        stations_in_area = cls.get_stations_in_area(remaining_route)
-
         vehicle = VehicleDAO.read_by_plate(request.plate)
+        user = Ev_userDAO.read_by_plate(request.plate)
+
         if not vehicle:
             cls._logger.error(
                 f"Vehicle with plate {request.plate} not found in database. Cannot process request {request.uuid}."
             )
             return "Vehicle not found. Please register your vehicle before making a request."
+
+        stations_in_area = cls.get_stations_in_area(remaining_route)
 
         # Assuming a minimum percent of 20% for the vehicle to be able to reach a charging station
         max_distance = vehicle.distance_percent(request.current_percent, 20)
@@ -121,7 +124,7 @@ class ControlRequests:
                     request_id=request.uuid,
                     charging_station=s,
                     start_time=start_time,
-                    price_hour=request.price_hour,
+                    value_time=user.value_time,
                     charging_hours=chg_hours,
                     detour_hours=routing_delay_hours,
                     delay_hours=routing_delay_hours + chg_hours,

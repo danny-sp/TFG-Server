@@ -45,8 +45,8 @@ class Option(BaseModel):
         ..., description="Estimated time of arrival at the station"
     )
     kw_speed: float = Field(..., gt=0.0, description="Charging speed in kW")
-    price_hour: float = Field(
-        default=15.0, gt=0.0, description="Price per hour for the driver"
+    value_time: float = Field(
+        default=15.0, gt=0.0, description="Value of time in €/hour for the driver"
     )
     charging_hours: float = Field(
         ..., gt=0.0, description="Required charging time in hours"
@@ -110,7 +110,7 @@ class Option(BaseModel):
         Dynamically calculates the utility of the option based on its price, and delay. Represents an aggregated "cost".
         Negative to maximize utility (minimize cost).
         """
-        return -((self.charging_hours + self.detour_hours)*self.price_hour + self.price)
+        return -((self.charging_hours + self.detour_hours)*self.value_time + self.price)
 
 
     def debug_str(self) -> str:
@@ -126,7 +126,8 @@ class Option(BaseModel):
             f"route_hours={self.route_hours}, "
             f"delay_hours={self.delay_hours}, "
             f"price={self.price}, "
-            f"services_nearby={[service.type for service in self.services_nearby]})"
+            f"services_nearby={[service.type for service in self.services_nearby]}, "
+            f"utility={self.utility})"
         )
     def to_dict(self) -> dict[str, Any]:
         """

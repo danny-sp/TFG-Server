@@ -58,8 +58,21 @@ def total_price(power_kw: float, pvpc_prices: List[float]) -> List[float]:
     Returns:
         List[float]: A list of total prices for each hour, including the margin.
     """
-    margin = 0.15 + (0.0009 * power_kw)
-    margin = max(0.15, min(margin, 0.60))  # Clamping the margin between 0.15 and 0.60
+    if power_kw <= 0:
+        raise ValueError("Power must be greater than 0 kW.")
+
+    if power_kw <= 22:
+        margin_cents = 20.0
+    elif power_kw <= 55:
+        margin_cents = 0.606 * power_kw + 6.667
+    elif power_kw <= 100:
+        margin_cents = 0.111 * power_kw + 33.889
+    elif power_kw <= 200:
+        margin_cents = 0.1 * power_kw + 35.0
+    else:
+        margin_cents = 55.0
+
+    margin = margin_cents / 100
 
     total_prices = [round(pvpc + margin, 3) for pvpc in pvpc_prices]
     return total_prices

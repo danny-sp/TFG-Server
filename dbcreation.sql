@@ -10,6 +10,7 @@ CREATE TABLE ev_users (
   username VARCHAR(100) NOT NULL,
   email VARCHAR(120) UNIQUE NOT NULL,
   phone VARCHAR(20),
+  value_of_time DECIMAL(10,2) DEFAULT 15.00,
   active_user BOOLEAN DEFAULT TRUE,
   registration_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );

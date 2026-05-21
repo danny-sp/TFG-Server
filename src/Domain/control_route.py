@@ -6,7 +6,7 @@ from typing import List, Tuple
 
 from geopy.distance import geodesic  # type: ignore
 
-import src.Persistance.web_client as RouteClient
+import src.Persistence.web_client as RouteClient
 from src.Utils.logger import setup_logger
 
 _logger = setup_logger("ControlRoute")

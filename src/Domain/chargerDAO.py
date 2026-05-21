@@ -7,7 +7,7 @@ from typing import Optional
 
 from src.Domain.charger import Charger
 from src.Domain.charging_station import ChargingStation
-from src.Persistance.db_broker import DBBroker
+from src.Persistence.db_broker import DBBroker
 from src.Utils.logger import setup_logger
 
 _logger = setup_logger("ChargerDAO")

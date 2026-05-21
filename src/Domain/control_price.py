@@ -5,7 +5,7 @@ Price calculation utilities for the system.
 from datetime import datetime
 from typing import List, Tuple
 
-import src.Persistance.web_client as WebClient
+import src.Persistence.web_client as WebClient
 from src.Utils.logger import setup_logger
 
 _logger = setup_logger("ControlPrice")

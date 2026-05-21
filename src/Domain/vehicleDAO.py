@@ -6,7 +6,7 @@ from typing import Optional
 
 from src.Domain.ev_user import EVUser
 from src.Domain.vehicle import Vehicle
-from src.Persistance.db_broker import DBBroker
+from src.Persistence.db_broker import DBBroker
 from src.Utils.logger import setup_logger
 
 _logger = setup_logger("VehicleDAO")

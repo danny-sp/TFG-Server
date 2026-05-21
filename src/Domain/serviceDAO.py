@@ -5,7 +5,7 @@ DAO for service entity.
 from typing import Optional
 
 from src.Domain.service import Service
-from src.Persistance.db_broker import DBBroker
+from src.Persistence.db_broker import DBBroker
 from src.Utils.constants import ServiceType
 from src.Utils.logger import setup_logger
 

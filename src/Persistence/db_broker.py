@@ -4,6 +4,7 @@ Module containing the DBBroker class: helper for managing database connections a
 
 import os
 from typing import List, Tuple
+import time
 
 import mariadb  # type: ignore
 from dotenv import load_dotenv
@@ -39,7 +40,7 @@ class DBBroker:
 
             self.pool = mariadb.ConnectionPool(
                 pool_name=os.getenv("DB_POOL_NAME", "web_pool"),
-                pool_size=int(os.getenv("DB_POOL_SIZE", "5")),
+                pool_size=int(os.getenv("DB_POOL_SIZE", "15")),
                 host=os.getenv("DB_HOST"),
                 port=int(os.getenv("DB_PORT", "3306")),
                 user=os.getenv("DB_USER"),
@@ -55,6 +56,13 @@ class DBBroker:
     def _get_connection(self):
         try:
             conn = self.pool.get_connection()
+            conn.autocommit = True
+            try:
+                cursor = conn.cursor()
+                cursor.close()
+            except mariadb.Error as e:
+                self._logger.warning(f"Could not reset isolation level: {e}")
+                
             self._logger.debug("Connection used from pool.")
             return conn
         except mariadb.Error as e:
@@ -95,11 +103,15 @@ class DBBroker:
             raise
 
         finally:
-            if cursor:
-                cursor.close()
-            if connection:
-                connection.close()
-                self._logger.debug("Connection returned to pool.")
+            try:
+                if cursor:
+                    cursor.close()
+            except Exception:
+                pass
+            finally:
+                if connection:
+                    connection.close()
+                    self._logger.debug("Connection returned to pool.")
 
     def execute_write_query(self, query: str, params: Tuple = ()) -> Tuple[int, int]:
         """
@@ -143,10 +155,14 @@ class DBBroker:
             raise
 
         finally:
-            if cursor:
-                cursor.close()
-            if connection:
-                connection.close()
+            try:
+                if cursor:
+                    cursor.close()
+            except Exception:
+                pass
+            finally:
+                if connection:
+                    connection.close()
                 self._logger.debug("Connection returned to pool.")
 
     def execute_many(self, query: str, params_list: List[Tuple]) -> int:

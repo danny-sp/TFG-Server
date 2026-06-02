@@ -25,14 +25,15 @@ class MqttListener:
             mqtt.CallbackAPIVersion.VERSION2,
             client_id=os.getenv("MQTT_CLIENT_ID", "serv_mqtt"),
         )
-        # self.client.username_pw_set(os.getenv("MQTT_USER"), os.getenv("MQTT_PASSWORD"))
+        self.client.tls_set()
+        self.client.username_pw_set(os.getenv("MQTT_USER"), os.getenv("MQTT_PASSWORD"))
 
         self.executor = ThreadPoolExecutor(
             max_workers=int(os.getenv("MQTT_MAX_WORKERS", "5"))
         )
 
-        self.broker_host = os.getenv("MQTT_BROKER_HOST", "localhost")
-        self.broker_port = int(os.getenv("MQTT_BROKER_PORT", "1883"))
+        self.broker_host = os.getenv("MQTT_BROKER_HOST", "tfg-danielschezctro.duckdns.org")
+        self.broker_port = int(os.getenv("MQTT_BROKER_PORT", "8883"))
 
         self.client.on_connect = self._on_connect
         self.client.on_message = self._on_message

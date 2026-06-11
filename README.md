@@ -35,7 +35,7 @@ pip install -e .
 
 ### .env
 
-Create a `.env` file in the root directory with the following content, replacing placeholders with actual values:
+Create a `.env` file in the root directory with the following content:
 
 ```
 # MQTT configuration

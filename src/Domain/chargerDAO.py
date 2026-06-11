@@ -25,13 +25,12 @@ def insert(charging_station: ChargingStation, charger: Charger) -> int:
         int: The ID of the newly inserted charger, or -1 if the insertion fails.
     """
     query = """
-    INSERT INTO chargers (charging_station_id, power_kw, charger_active)
-    VALUES (?, ?, ?)
+    INSERT INTO chargers (charging_station_id, power_kw)
+    VALUES (?, ?)
     """
     params = (
         charging_station.id,
         charger.power_kw,
-        charger.busy,
     )
     db = DBBroker()
     try:
@@ -57,10 +56,10 @@ def update(charging_station: ChargingStation, charger: Charger) -> bool:
     """
     query = """
     UPDATE chargers
-    SET charging_station_id = ?, power_kw = ?, charger_busy = ?
+    SET charging_station_id = ?, power_kw = ?
     WHERE id = ?
     """
-    params = (charging_station.id, charger.power_kw, charger.busy, charger.id)
+    params = (charging_station.id, charger.power_kw, charger.id)
     db = DBBroker()
     try:
         db.execute_write_query(query, params)
@@ -167,5 +166,5 @@ def _row_to_charger(row: dict) -> Charger:
         Charger: The instantiated Charger object.
     """
     return Charger(
-        id=row["id"], power_kw=row["power_kw"], busy=bool(row["charger_busy"])
+        id=row["id"], power_kw=row["power_kw"]
     )

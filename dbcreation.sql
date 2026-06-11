@@ -61,7 +61,6 @@ CREATE TABLE chargers (
   id INT AUTO_INCREMENT PRIMARY KEY,
   charging_station_id INT NOT NULL,
   power_kw DECIMAL(5,2) NOT NULL,
-  charger_busy BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (charging_station_id) REFERENCES charging_stations(id)
     ON UPDATE CASCADE ON DELETE CASCADE
 );

@@ -26,9 +26,10 @@ def insert(charging_station: ChargingStation) -> int:
     INSERT INTO charging_stations (station_name, operator, location)
     VALUES (?, ?, ST_GeomFromText(?))
     """
+    op_id = _read_operator_id(charging_station.operator)
     params = (
         charging_station.name,
-        charging_station.operator,
+        op_id,
         f"POINT({charging_station.location[1]} {charging_station.location[0]})",
     )
     db = DBBroker()
@@ -55,9 +56,10 @@ def update(charging_station: ChargingStation) -> bool:
     SET station_name = ?, operator = ?, location = ST_GeomFromText(?)
     WHERE id = ?
     """
+    op_id = _read_operator_id(charging_station.operator)
     params = (
         charging_station.name,
-        charging_station.operator,
+        op_id,
         f"POINT({charging_station.location[1]} {charging_station.location[0]})",
         charging_station.id,
     )
@@ -158,6 +160,28 @@ def read_by_id(station_id: int) -> Optional[ChargingStation]:
     except Exception as e:
         _logger.error(f"Failed to read charging_station with ID {station_id}: {e}")
         return None
+
+def _read_operator_id(operator_name: str) -> int:
+    """
+    Reads the operator ID from the database based on the operator name.
+
+    Args:
+        operator_name (str): The name of the operator.
+    Returns:
+        int: The ID of the operator if found, otherwise 1 (Unknown).
+    """
+    query = """
+    SELECT id
+    FROM operators
+    WHERE operator_name = ?
+    """
+    db = DBBroker()
+    try:
+        rows = db.execute_read_query(query, (operator_name,))
+        return rows[0]["id"] if rows else 1
+    except Exception as e:
+        _logger.error(f"Failed to read operator ID for {operator_name}: {e}")
+        return 1
 
 
 def _row_to_charging_station(row) -> ChargingStation:

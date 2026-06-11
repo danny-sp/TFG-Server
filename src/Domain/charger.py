@@ -15,13 +15,9 @@ class Charger(BaseModel):
     Attributes:
         id (int): Unique database identifier for the charger.
         power_kw (float): The maximum charging power of the charger in kilowatts.
-        busy (bool): Indicates whether the charger is currently in use.
     """
 
     model_config = ConfigDict(extra="forbid", frozen=True)
 
     id: int = Field(..., gt=0, description="Unique database identifier")
     power_kw: float = Field(..., gt=0.0, description="Maximum charging power (kW)")
-    busy: bool = Field(
-        ..., description="Indicates whether the charger is currently in use"
-    )

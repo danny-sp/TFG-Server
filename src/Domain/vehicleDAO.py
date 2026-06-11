@@ -12,25 +12,27 @@ from src.Utils.logger import setup_logger
 _logger = setup_logger("VehicleDAO")
 
 
-def insert(vehicle: Vehicle) -> int:
+def insert(vehicle: Vehicle, user: EVUser) -> int:
     """
     Inserts a new vehicle into the database.
 
     Args:
         vehicle (Vehicle): The vehicle object to insert.
+        user (EVUser): The user to whom the vehicle belongs.
 
     Returns:
         int: The ID of the newly inserted vehicle, or -1 if the insertion fails.
     """
     query = """
-    INSERT INTO vehicles (plate, capacity_kwh, max_kw_speed, user_id, registration_date)
+    INSERT INTO vehicles (plate, consumption_wh_km, capacity_kwh, max_kw_speed, user_id, registration_date)
     VALUES (?, ?, ?, ?, ?)
     """
     params = (
         vehicle.plate,
+        vehicle.consumption_wh_km,
         vehicle.capacity_kwh,
         vehicle.max_kw_speed,
-        vehicle.user.id,
+        user.id,
         vehicle.reg_date,
     )
     db = DBBroker()
@@ -42,25 +44,27 @@ def insert(vehicle: Vehicle) -> int:
     return inserted_id
 
 
-def update(vehicle: Vehicle) -> bool:
+def update(vehicle: Vehicle, user: EVUser) -> bool:
     """
     Updates an existing vehicle in the database.
 
     Args:
         vehicle (Vehicle): The vehicle object with updated values.
+        user (EVUser): The user to whom the vehicle belongs.
 
     Returns:
         bool: True if the update was successful, False otherwise.
     """
     query = """
     UPDATE vehicles
-    SET capacity_kwh = ?, max_kw_speed = ?, user_id = ?, registration_date = ?
+    SET consumption_wh_km = ?, capacity_kwh = ?, max_kw_speed = ?, user_id = ?, registration_date = ?
     WHERE plate = ?
     """
     params = (
+        vehicle.consumption_wh_km,
         vehicle.capacity_kwh,
         vehicle.max_kw_speed,
-        vehicle.user.id,
+        user.id,
         vehicle.reg_date,
         vehicle.plate,
     )

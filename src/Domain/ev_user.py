@@ -18,6 +18,16 @@ class EVUser(BaseModel):
     This class is immutable (frozen) as the user data is pre-populated in the
     database. It acts as a container for user metadata and their associated
     collection of vehicles.
+
+    Attributes:
+        id (int): Unique database identifier for the user.
+        username (str): Unique login name for the user.
+        email (str): Primary contact email address for the user.
+        phone (str | None): Optional contact phone number for the user.
+        value_time (float): User's subjective value of time in €/hour, used for route optimization.
+        active (bool): Indicates if the account is currently active.
+        registration_date (datetime): Date and time when the user registered.
+        vehicles (list[Vehicle]): List of vehicles owned or managed by this user.
     """
 
     model_config = ConfigDict(extra="forbid", arbitrary_types_allowed=True, frozen=True)

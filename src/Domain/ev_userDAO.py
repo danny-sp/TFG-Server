@@ -22,13 +22,14 @@ def insert(ev_user: EVUser) -> int:
         int: The ID of the newly inserted user, or -1 if the insertion fails.
     """
     query = """
-    INSERT INTO ev_users (username, email, phone, active_user, registration_date)
-    VALUES (?, ?, ?, ?, ?)
+    INSERT INTO ev_users (username, email, phone, value_of_time, active_user, registration_date)
+    VALUES (?, ?, ?, ?, ?, ?)
     """
     params = (
         ev_user.username,
         ev_user.email,
         ev_user.phone,
+        ev_user.value_time,
         ev_user.active,
         ev_user.registration_date,
     )
@@ -53,13 +54,14 @@ def update(ev_user: EVUser) -> bool:
     """
     query = """
     UPDATE ev_users
-    SET username = ?, email = ?, phone = ?, active_user = ?, registration_date = ?
+    SET username = ?, email = ?, phone = ?, value_of_time = ?, active_user = ?, registration_date = ?
     WHERE id = ?
     """
     params = (
         ev_user.username,
         ev_user.email,
         ev_user.phone,
+        ev_user.value_time,
         ev_user.active,
         ev_user.registration_date,
         ev_user.id,
@@ -152,7 +154,7 @@ def _row_to_ev_user(row: dict) -> EVUser:
         username=row["username"],
         email=row["email"],
         phone=row["phone"],
+        value_time=row["value_of_time"],
         active=bool(row["active_user"]),
         registration_date=row["registration_date"],
-        value_time=row["value_of_time"]
     )

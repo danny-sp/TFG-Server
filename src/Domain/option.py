@@ -129,6 +129,7 @@ class Option(BaseModel):
             f"services_nearby={[service.type for service in self.services_nearby]}, "
             f"utility={self.utility})"
         )
+
     def to_dict(self) -> dict[str, Any]:
         """
         Serializes the Option into a specific dictionary format required by the

@@ -13,6 +13,13 @@ from src.Domain.charger import Charger
 class ChargingStation(BaseModel):
     """
     Domain model representing a physical Charging Station location.
+
+    Attributes:
+        id (int): Unique database identifier for the station.
+        name (str): Commercial name of the station.
+        location (tuple[float, float]): GPS coordinates of the station (latitude, longitude).
+        operator (str): Company responsible for operating the station.
+        chargers (list[Charger]): Collection of physical chargers available at this location.
     """
 
     model_config = ConfigDict(extra="forbid", arbitrary_types_allowed=True, frozen=True)

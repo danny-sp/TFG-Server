@@ -106,7 +106,11 @@ To start the server, simply run:
 uv run main.py
 ```
 
-`LOG_LEVEL` can be modified
+`LOG_LEVEL` can be modified before `uv`: 
+
+```bash
+LOG_LEVEL=DEBUG uv run main.py
+```
 
 ---
 
